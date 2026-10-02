@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { articles } from '../data/articles';
 
 const pagesPrincipales = [
   { href: '/', label: 'Accueil', description: 'Présentation de l’annuaire et accès à la recherche locale.' },
@@ -36,6 +37,10 @@ const informations = [
       <h2>Pages principales</h2>
       <div class="sitemap-list">
         {pagesPrincipales.map((page) => <a href={page.href}><strong>{page.label}</strong><span>{page.description}</span></a>)}
+      </div>
+      <h2>Guides crédit immobilier</h2>
+      <div class="sitemap-list">
+        {articles.map((article) => <a href={article.href}><strong>{article.title}</strong><span>{article.description}</span></a>)}
       </div>
       <h2>Guides locaux</h2>
       <div class="sitemap-list">

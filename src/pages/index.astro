@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSearch from '../components/HeroSearch.astro';
 import CourtierCard from '../components/CourtierCard.astro';
 import { cities, courtiers } from '../data/courtiers';
+import ArticleCard from '../components/ArticleCard.astro';
+import { articles } from '../data/articles';
 ---
 <BaseLayout title="321 Courtiers Immobiliers | Trouver un courtier près de chez vous" description="Recherchez des courtiers en prêt immobilier par ville, découvrez notre méthode et consultez des guides pour préparer votre financement.">
   <section class="home-hero">
@@ -44,6 +46,12 @@ import { cities, courtiers } from '../data/courtiers';
       <article><span>01</span><h3>Cadrez votre projet</h3><p>Type de bien, budget, apport, revenus et calendrier : vous gagnez du temps dès le premier échange.</p></article>
       <article><span>02</span><h3>Comparez la méthode</h3><p>Demandez comment le professionnel étudie le dossier, consulte les banques et présente sa rémunération.</p></article>
       <article><span>03</span><h3>Lisez les conditions globales</h3><p>Le taux ne suffit pas : assurance, garanties, frais et souplesse du prêt comptent aussi.</p></article>
+    </div>
+  </section>
+  <section class="section section-tint">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Préparer votre financement</p><h2>Les derniers guides</h2></div><a href="/blog/">Tous les guides →</a></div>
+      <div class="article-grid">{articles.slice(0, 20).map((article) => <ArticleCard article={article} />)}</div>
     </div>
   </section>
   <section class="section section-dark"><div class="container cta-panel"><div><p class="eyebrow">Prêt à commencer ?</p><h2>Accédez à l’annuaire par ville.</h2></div><a class="button button-light" href="/trouver-mon-courtier/">Trouver mon courtier</a></div></section>

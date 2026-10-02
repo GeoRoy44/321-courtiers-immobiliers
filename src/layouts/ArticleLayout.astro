@@ -1,0 +1,30 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { cities } from '../data/courtiers';
+interface Props {
+  frontmatter: { title: string; description: string; date: string };
+}
+const { frontmatter } = Astro.props;
+const localCities = cities.filter((city) => city.status === 'Guide local disponible');
+---
+<BaseLayout title={`${frontmatter.title} | 321 Courtiers Immobiliers`} description={frontmatter.description}>
+  <section class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <a class="text-link" href="/blog/">← Tous les guides crédit</a>
+      <p class="eyebrow article-eyebrow">Guide pratique · Financement</p>
+      <h1>{frontmatter.title}</h1>
+      <p class="lead">{frontmatter.description}</p>
+      <p class="article-date">Publié le <time datetime={frontmatter.date}>2 octobre 2026</time> · Rédaction 321 Courtiers Immobiliers</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container narrow prose">
+      <p class="notice">Ce guide fournit des repères généraux, pas une offre de crédit ni un conseil adapté à votre situation. Faites confirmer votre montage et les conditions applicables par le prêteur et les professionnels concernés.</p>
+      <slot />
+      <h2>Préparer votre projet dans le sud de Nantes</h2>
+      <p>Les guides locaux abordent les travaux, les achats dans le neuf et les opérations d’achat-revente. Retrouvez les points à préparer selon votre commune.</p>
+      <ul>{localCities.map((city) => <li><a href={`/${city.slug}/`}>Courtier en prêt immobilier : {city.name}</a></li>)}</ul>
+      <p>Vous pouvez aussi consulter <a href="/annuaire-courtiers-pret-immobilier/">l’annuaire des courtiers</a> et <a href="/a-propos/">notre méthode éditoriale</a> pour comprendre le périmètre du site.</p>
+    </div>
+  </section>
+</BaseLayout>
