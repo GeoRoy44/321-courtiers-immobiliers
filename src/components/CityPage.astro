@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSearch from './HeroSearch.astro';
+
+interface Props {
+  city: string;
+  title: string;
+  description: string;
+  intro: string;
+  contextTitle: string;
+  context: string;
+  projects: { title: string; text: string }[];
+  questions: { question: string; answer: string }[];
+}
+const { city, title, description, intro, contextTitle, context, projects, questions } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <section class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <p class="eyebrow">Guide local · Loire-Atlantique</p>
+      <h1>Courtier en prêt immobilier à {city}</h1>
+      <p class="lead">{intro}</p>
+      <HeroSearch />
+    </div>
+  </section>
+  <section class="section">
+    <div class="container content-grid">
+      <article class="prose">
+        <h2>{contextTitle}</h2>
+        <p>{context}</p>
+        <h2>Les projets financés à {city}</h2>
+        <div class="service-grid">
+          {projects.map((project) => <section class="service-card"><h3>{project.title}</h3><p>{project.text}</p></section>)}
+        </div>
+        <h2>Comment choisir un courtier dans votre secteur ?</h2>
+        <p>Comparez le périmètre d’intervention, les spécialités, la disponibilité, les modalités d’honoraires et les informations réglementaires présentées par chaque professionnel. Demandez toujours une explication claire de son mandat et de sa rémunération avant de vous engager.</p>
+        <h2>Questions fréquentes</h2>
+        <div class="faq-list">
+          {questions.map((item) => <details><summary>{item.question}</summary><p>{item.answer}</p></details>)}
+        </div>
+      </article>
+      <aside class="sidebar-card">
+        <p class="eyebrow">À retenir</p>
+        <h2>Votre recherche à {city}</h2>
+        <ul class="check-list">
+          <li>Vérifiez les informations et la date de mise à jour.</li>
+          <li>Demandez le détail des honoraires.</li>
+          <li>Comparez les conditions globales, pas seulement le taux.</li>
+          <li>Préparez revenus, apport et projet avant le premier échange.</li>
+        </ul>
+        <a class="button button-dark" href="/annuaire-courtiers-pret-immobilier/">Consulter l’annuaire</a>
+      </aside>
+    </div>
+  </section>
+  <section class="section section-tint">
+    <div class="container cta-panel">
+      <div><p class="eyebrow">Besoin d’un point de départ ?</p><h2>Trouvez les fiches disponibles autour de chez vous.</h2></div>
+      <a class="button" href="/trouver-mon-courtier/">Rechercher par ville</a>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CourtierCard from '../../components/CourtierCard.astro';
+import { courtiers } from '../../data/courtiers';
+---
+<BaseLayout title="Annuaire des courtiers en prêt immobilier | 321 Courtiers" description="Consultez les fiches de l’annuaire de courtiers en prêt immobilier. Les informations professionnelles sont présentées avec une date de vérification.">
+  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Annuaire national</p><h1>Les fiches courtiers, bientôt ville par ville.</h1><p class="lead">La structure est prête à accueillir les 321 professionnels. Les premiers blocs ci-dessous sont volontairement des exemples non indexables de données à compléter et vérifier avant publication.</p></div></section>
+  <section class="section"><div class="container"><div class="notice"><strong>Statut de la V1 :</strong> aucune fiche professionnelle complète n’est publiée à ce stade. Les entrées d’exemple servent à valider le format de lecture et le futur import des données.</div><div class="card-grid">{courtiers.map((courtier) => <div id={courtier.slug}><CourtierCard courtier={courtier} /></div>)}</div><div class="prose narrow section-space"><h2>Le futur format d’une fiche</h2><p>Chaque fiche intégrera uniquement des données publiques ou autorisées : identité professionnelle, ville, zone d’intervention, spécialités déclarées, coordonnées accessibles publiquement, site officiel et date de vérification. Les avis, notes, labels ou relations commerciales ne seront affichés qu’avec leur source, leur date de relevé et leur contexte.</p></div></div></section>
+</BaseLayout>

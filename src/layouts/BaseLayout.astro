@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { title, description, noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Aller au contenu</a>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/" aria-label="321 Courtiers, accueil">
+          <span class="brand-mark" aria-hidden="true">321</span>
+          <span>Courtiers<br /><small>Immobiliers</small></span>
+        </a>
+        <nav aria-label="Navigation principale">
+          <a href="/trouver-mon-courtier/">Trouver mon courtier</a>
+          <a href="/annuaire-courtiers-pret-immobilier/">L’annuaire</a>
+          <a href="/blog/">Guides crédit</a>
+          <a href="/a-propos/">À propos</a>
+        </nav>
+        <a class="button button-small" href="/trouver-mon-courtier/">Rechercher</a>
+      </div>
+    </header>
+    <main id="main-content">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="brand brand-footer" href="/">
+            <span class="brand-mark" aria-hidden="true">321</span>
+            <span>Courtiers<br /><small>Immobiliers</small></span>
+          </a>
+          <p>Un annuaire éditorial pour chercher un courtier en prêt immobilier près de chez soi.</p>
+        </div>
+        <div>
+          <h2>Explorer</h2>
+          <a href="/trouver-mon-courtier/">Trouver mon courtier</a>
+          <a href="/annuaire-courtiers-pret-immobilier/">Annuaire des courtiers</a>
+          <a href="/blog/">Guides crédit immobilier</a>
+        </div>
+        <div>
+          <h2>Transparence</h2>
+          <a href="/a-propos/">Notre méthode</a>
+          <a href="/mentions-legales/">Mentions légales</a>
+          <a href="/politique-confidentialite/">Confidentialité</a>
+        </div>
+      </div>
+      <div class="container footer-bottom">© {new Date().getFullYear()} 321 Courtiers Immobiliers. Les informations doivent être vérifiées auprès des professionnels concernés.</div>
+    </footer>
+  </body>
+</html>

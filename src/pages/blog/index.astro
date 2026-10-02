@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const articles = [
+  { title: 'Comment choisir un courtier en prêt immobilier ?', category: 'Choisir son courtier', excerpt: 'Les critères concrets à comparer avant de confier votre dossier : méthode, transparence, disponibilité et conditions de rémunération.' },
+  { title: 'Courtier ou banque : comment organiser votre recherche ?', category: 'Financement', excerpt: 'Comprendre les rôles de chacun et préparer vos démarches sans multiplier inutilement les demandes.' },
+  { title: 'Quels documents préparer avant un premier rendez-vous ?', category: 'Dossier de prêt', excerpt: 'Une check-list simple pour présenter un projet lisible et accélérer l’étude de votre financement.' },
+];
+---
+<BaseLayout title="Guides sur le courtage et le crédit immobilier" description="Des guides pratiques pour choisir un courtier, préparer son dossier de prêt immobilier et comprendre les étapes d’un financement.">
+  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Guides crédit immobilier</p><h1>Comprendre le courtage avant de vous engager.</h1><p class="lead">Des contenus pratiques, rédigés pour vous aider à préparer votre projet et à poser les bonnes questions.</p></div></section>
+  <section class="section"><div class="container article-grid">{articles.map((article) => <article class="article-card"><span>{article.category}</span><h2>{article.title}</h2><p>{article.excerpt}</p><a href="/trouver-mon-courtier/">Lire le guide <span aria-hidden="true">→</span></a></article>)}</div></section>
+</BaseLayout>

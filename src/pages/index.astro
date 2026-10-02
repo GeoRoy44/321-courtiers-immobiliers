@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSearch from '../components/HeroSearch.astro';
+import CourtierCard from '../components/CourtierCard.astro';
+import { cities, courtiers } from '../data/courtiers';
+---
+<BaseLayout title="321 Courtiers Immobiliers | Trouver un courtier près de chez vous" description="Recherchez des courtiers en prêt immobilier par ville, découvrez notre méthode et consultez des guides pour préparer votre financement.">
+  <section class="home-hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Annuaire éditorial indépendant</p>
+        <h1>Trouvez un courtier en prêt immobilier près de chez vous.</h1>
+        <p class="lead">Comparez les informations utiles, explorez les pages locales et avancez avec une méthode claire avant votre projet immobilier.</p>
+        <HeroSearch />
+      </div>
+      <div class="hero-panel" aria-label="Notre méthode">
+        <p class="eyebrow">Recherche utile</p>
+        <strong>Une sélection lisible, ville par ville.</strong>
+        <ul class="check-list">
+          <li>Pages locales et guides de décision</li>
+          <li>Fiches structurées et informations datées</li>
+          <li>Distinction entre contenu éditorial et partenariat</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Commencer près de vous</p><h2>Explorer les villes déjà disponibles</h2></div><a href="/trouver-mon-courtier/">Voir toutes les villes <span aria-hidden="true">→</span></a></div>
+      <div class="city-grid">
+        {cities.filter((city) => city.status === 'Guide local disponible').map((city) => <a class="city-card" href={`/${city.slug}/`}><span>{city.department}</span><h3>{city.name}</h3><p>{city.status}</p><b aria-hidden="true">→</b></a>)}
+      </div>
+    </div>
+  </section>
+  <section class="section section-tint">
+    <div class="container split-heading"><div><p class="eyebrow">L’annuaire démarre ici</p><h2>Des fiches conçues pour être comparées.</h2></div><p>Chaque fiche doit distinguer clairement les informations publiques vérifiées, la date de contrôle et les éventuelles relations commerciales. La V1 inclut une structure prête à recevoir les 321 courtiers.</p></div>
+    <div class="container card-grid">
+      {courtiers.map((courtier) => <CourtierCard courtier={courtier} />)}
+    </div>
+  </section>
+  <section class="section">
+    <div class="container steps-grid">
+      <div><p class="eyebrow">Avant de contacter un professionnel</p><h2>Les 3 repères qui rendent la recherche plus simple.</h2></div>
+      <article><span>01</span><h3>Cadrez votre projet</h3><p>Type de bien, budget, apport, revenus et calendrier : vous gagnez du temps dès le premier échange.</p></article>
+      <article><span>02</span><h3>Comparez la méthode</h3><p>Demandez comment le professionnel étudie le dossier, consulte les banques et présente sa rémunération.</p></article>
+      <article><span>03</span><h3>Lisez les conditions globales</h3><p>Le taux ne suffit pas : assurance, garanties, frais et souplesse du prêt comptent aussi.</p></article>
+    </div>
+  </section>
+  <section class="section section-dark"><div class="container cta-panel"><div><p class="eyebrow">Prêt à commencer ?</p><h2>Accédez à l’annuaire par ville.</h2></div><a class="button button-light" href="/trouver-mon-courtier/">Trouver mon courtier</a></div></section>
+</BaseLayout>

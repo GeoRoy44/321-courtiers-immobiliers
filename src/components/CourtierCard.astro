@@ -1,0 +1,17 @@
+---
+import type { Courtier } from '../data/courtiers';
+interface Props { courtier: Courtier; }
+const { courtier } = Astro.props;
+---
+<article class="courtier-card">
+  <div class="card-topline"><span>{courtier.city}</span><span>{courtier.department}</span></div>
+  <h3>{courtier.name}</h3>
+  <p>{courtier.description}</p>
+  <ul class="tags" aria-label="Spécialités">
+    {courtier.specialties.map((specialty) => <li>{specialty}</li>)}
+  </ul>
+  <div class="card-footer">
+    <span>Statut : {courtier.verifiedAt}</span>
+    <a href={`/annuaire-courtiers-pret-immobilier/#${courtier.slug}`}>Voir la fiche <span aria-hidden="true">→</span></a>
+  </div>
+</article>

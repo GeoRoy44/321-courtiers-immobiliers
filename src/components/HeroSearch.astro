@@ -1,0 +1,37 @@
+---
+import { cities } from '../data/courtiers';
+const cityOptions = cities.filter((city) => city.status !== 'À venir');
+---
+<form class="finder" action="/trouver-mon-courtier/" method="get" data-finder>
+  <label for="city-search">Votre ville ou votre code postal</label>
+  <div class="finder-row">
+    <input id="city-search" name="ville" list="city-list" placeholder="Ex. Nantes, Rezé, 44000" autocomplete="postal-code" />
+    <datalist id="city-list">
+      {cityOptions.map((city) => <option value={city.name} />)}
+    </datalist>
+    <button class="button" type="submit">Trouver un courtier</button>
+  </div>
+  <p class="finder-note">Nous vous orientons vers les pages locales et les fiches publiées dans l’annuaire.</p>
+</form>
+<script>
+  const form = document.querySelector('[data-finder]');
+  form?.addEventListener('submit', (event) => {
+    const input = form.querySelector('input[name="ville"]');
+    if (!(input instanceof HTMLInputElement)) return;
+    const value = input.value.trim().toLocaleLowerCase('fr-FR');
+    const matches: Record<string, string> = {
+      'rezé': '/courtier-pret-immobilier-reze/',
+      'reze': '/courtier-pret-immobilier-reze/',
+      'vertou': '/courtier-pret-immobilier-vertou/',
+      'bouguenais': '/courtier-pret-immobilier-bouguenais/',
+      'les sorinières': '/courtier-pret-immobilier-les-sorinieres/',
+      'les sorinieres': '/courtier-pret-immobilier-les-sorinieres/',
+      'la haye-fouassière': '/courtier-pret-immobilier-la-haye-fouassiere/',
+      'la haye-fouassiere': '/courtier-pret-immobilier-la-haye-fouassiere/',
+    };
+    if (matches[value]) {
+      event.preventDefault();
+      window.location.assign(matches[value]);
+    }
+  });
+</script>
