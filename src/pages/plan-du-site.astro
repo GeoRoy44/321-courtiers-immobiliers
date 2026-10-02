@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const pagesPrincipales = [
+  { href: '/', label: 'Accueil', description: 'Présentation de l’annuaire et accès à la recherche locale.' },
+  { href: '/trouver-mon-courtier/', label: 'Trouver mon courtier', description: 'Recherche de pages locales et repères pour comparer les professionnels.' },
+  { href: '/annuaire-courtiers-pret-immobilier/', label: 'Annuaire des courtiers', description: 'Structure de l’annuaire national de courtiers en prêt immobilier.' },
+  { href: '/blog/', label: 'Guides crédit immobilier', description: 'Hub éditorial sur le courtage et le financement.' },
+  { href: '/a-propos/', label: 'À propos', description: 'Méthode éditoriale et principes de transparence.' },
+];
+
+const guidesLocaux = [
+  { href: '/courtier-pret-immobilier-reze/', label: 'Courtier en prêt immobilier à Rezé' },
+  { href: '/courtier-pret-immobilier-bouguenais/', label: 'Courtier en prêt immobilier à Bouguenais' },
+  { href: '/courtier-pret-immobilier-vertou/', label: 'Courtier en prêt immobilier à Vertou' },
+  { href: '/courtier-pret-immobilier-les-sorinieres/', label: 'Courtier en prêt immobilier aux Sorinières' },
+  { href: '/courtier-pret-immobilier-la-haye-fouassiere/', label: 'Courtier en prêt immobilier à La Haye-Fouassière' },
+];
+
+const informations = [
+  { href: '/mentions-legales/', label: 'Mentions légales' },
+  { href: '/politique-confidentialite/', label: 'Politique de confidentialité' },
+  { href: '/plan-du-site/', label: 'Plan du site' },
+];
+---
+<BaseLayout title="Plan du site | 321 Courtiers Immobiliers" description="Retrouvez toutes les pages disponibles sur 321 Courtiers Immobiliers.">
+  <section class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <p class="eyebrow">Navigation</p>
+      <h1>Plan du site</h1>
+      <p class="lead">Toutes les pages disponibles sont regroupées ici pour faciliter votre navigation et l’exploration du site.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container prose narrow">
+      <h2>Pages principales</h2>
+      <div class="sitemap-list">
+        {pagesPrincipales.map((page) => <a href={page.href}><strong>{page.label}</strong><span>{page.description}</span></a>)}
+      </div>
+      <h2>Guides locaux</h2>
+      <div class="sitemap-list">
+        {guidesLocaux.map((page) => <a href={page.href}><strong>{page.label}</strong><span>Guide local pour préparer et comparer une recherche de financement.</span></a>)}
+      </div>
+      <h2>Informations</h2>
+      <div class="sitemap-list">
+        {informations.map((page) => <a href={page.href}><strong>{page.label}</strong><span>Informations sur le fonctionnement et les règles du site.</span></a>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
