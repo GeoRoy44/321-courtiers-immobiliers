@@ -136,6 +136,17 @@ details p { margin: 14px 0 0; }
 .directory-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; }
 .prose a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
 .prose h3 { margin-top: 30px; line-height: 1.4; }
+.prose { overflow-wrap: anywhere; }
+.prose table { width: 100%; margin-block: 28px; border-collapse: collapse; table-layout: fixed; font-size: .92rem; }
+.prose th, .prose td { padding: 16px 12px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+.prose th { background: var(--blue-soft); color: var(--navy); }
+.table-scroll { max-width: 100%; margin-block: 28px; overflow-x: auto; }
+.table-scroll table { min-width: 620px; margin-block: 0; }
+.table-scroll:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.table-scroll-hint { display: none; }
+@media (max-width: 600px) { .table-scroll-hint { display: block; font-size: .82rem; } }
+.prose h2[id], .prose h3[id] { scroll-margin-top: 110px; }
+.related-guides { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border); }
 .prose > section + section { margin-top: 56px; }
 .sitemap-list { display: grid; gap: 16px; }
 .sitemap-list a { display: grid; gap: 4px; padding: 18px; border: 1px solid var(--border); border-radius: 10px; text-decoration: none; }
