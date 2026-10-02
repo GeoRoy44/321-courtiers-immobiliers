@@ -5,4 +5,5 @@ export default defineConfig({
   site: 'https://321courtierimmobilier.fr',
   integrations: [sitemap()],
   output: 'static',
+  compressHTML: true,
 });
