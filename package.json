@@ -11,6 +11,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "test": "node --test tests/*.test.mjs",
     "deploy": "wrangler deploy"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "parse5": "8.0.1",
     "wrangler": "4.147.0"
   }
 }

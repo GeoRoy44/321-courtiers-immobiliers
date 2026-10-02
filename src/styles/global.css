@@ -146,6 +146,22 @@ details p { margin: 14px 0 0; }
 .table-scroll-hint { display: none; }
 @media (max-width: 600px) { .table-scroll-hint { display: block; font-size: .82rem; } }
 .prose h2[id], .prose h3[id] { scroll-margin-top: 110px; }
+.article-toc { margin: 32px 0 44px; }
+.article-toc details { padding: 24px 28px; border-color: var(--line); background: var(--mist); }
+.article-toc summary { font-size: 1.05rem; line-height: 1.5; }
+.article-toc ol { margin: 22px 0 0; padding-left: 24px; }
+.article-toc ul { margin-top: 10px; padding-left: 20px; list-style-type: disc; }
+.article-toc li { padding-left: 4px; font-size: .96rem; }
+.article-toc li::marker { color: var(--blue); font-weight: 700; }
+.article-toc li + li { margin-top: 12px; }
+.article-toc a { text-decoration: none; }
+.article-toc a:hover { text-decoration: underline; }
+.article-toc a:focus-visible, .article-toc summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; border-radius: 2px; }
+@media (max-width: 600px) {
+  .article-toc details { padding: 20px 18px; }
+  .article-toc li { font-size: .91rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .related-guides { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border); }
 .prose > section + section { margin-top: 56px; }
 .sitemap-list { display: grid; gap: 16px; }
