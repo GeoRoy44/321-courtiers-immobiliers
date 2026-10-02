@@ -1,9 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CourtierCard from '../../components/CourtierCard.astro';
+import DirectoryEmptyState from '../../components/DirectoryEmptyState.astro';
 import { courtiers } from '../../data/courtiers';
 ---
-<BaseLayout title="Annuaire des courtiers en prêt immobilier | 321 Courtiers" description="Consultez les fiches de l’annuaire de courtiers en prêt immobilier. Les informations professionnelles sont présentées avec une date de vérification.">
-  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">Annuaire national</p><h1>Les fiches courtiers, bientôt ville par ville.</h1><p class="lead">La structure est prête à accueillir les 321 professionnels. Les premiers blocs ci-dessous sont volontairement des exemples non indexables de données à compléter et vérifier avant publication.</p></div></section>
-  <section class="section"><div class="container"><div class="notice"><strong>Statut de la V1 :</strong> aucune fiche professionnelle complète n’est publiée à ce stade. Les entrées d’exemple servent à valider le format de lecture et le futur import des données.</div><div class="card-grid">{courtiers.map((courtier) => <div id={courtier.slug}><CourtierCard courtier={courtier} /></div>)}</div><div class="prose narrow section-space"><h2>Le futur format d’une fiche</h2><p>Chaque fiche intégrera uniquement des données publiques ou autorisées : identité professionnelle, ville, zone d’intervention, spécialités déclarées, coordonnées accessibles publiquement, site officiel et date de vérification. Les avis, notes, labels ou relations commerciales ne seront affichés qu’avec leur source, leur date de relevé et leur contexte.</p></div></div></section>
+<BaseLayout title="Annuaire des courtiers en prêt immobilier | 321 Courtiers" description={courtiers.length ? "Consultez les fiches professionnelles publiées et leurs informations de vérification." : "L’annuaire est en préparation : aucune fiche de courtier vérifiée n’est encore publiée. Découvrez nos guides locaux et notre méthode."}>
+  <section class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <p class="eyebrow">Annuaire des professionnels</p>
+      <h1>Annuaire des courtiers en prêt immobilier</h1>
+      <p class="lead">Des informations vérifiées pour préparer votre recherche. Les fiches de professionnels sont distinctes des guides éditoriaux consacrés aux communes et au financement.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      {courtiers.length > 0 ? (
+        <div class="card-grid">{courtiers.map((courtier) => <div id={courtier.slug}><CourtierCard courtier={courtier} /></div>)}</div>
+      ) : (
+        <DirectoryEmptyState />
+      )}
+      <div class="prose narrow section-space">
+        <h2>Notre méthode de publication</h2>
+        <p>Chaque fiche publiée devra présenter des informations publiques ou autorisées : identité professionnelle, ville, zone d’intervention, spécialités déclarées, site officiel et date de vérification. Les avis, notes ou labels ne seront affichés qu’avec leur source, leur date de relevé et leur contexte.</p>
+        <p>La présence d’un guide sur une commune ne signifie pas qu’un courtier y est référencé. Pour comprendre les critères retenus et la distinction entre information éditoriale et partenariat, consultez <a href="/a-propos/">notre méthode</a>.</p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

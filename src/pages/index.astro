@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSearch from '../components/HeroSearch.astro';
 import CourtierCard from '../components/CourtierCard.astro';
+import DirectoryEmptyState from '../components/DirectoryEmptyState.astro';
 import { cities, courtiers } from '../data/courtiers';
 import ArticleCard from '../components/ArticleCard.astro';
 import { articles } from '../data/articles';
@@ -20,7 +21,7 @@ import { articles } from '../data/articles';
         <strong>Une sélection lisible, ville par ville.</strong>
         <ul class="check-list">
           <li>Pages locales et guides de décision</li>
-          <li>Fiches structurées et informations datées</li>
+          <li>Critères pour comparer les professionnels</li>
           <li>Distinction entre contenu éditorial et partenariat</li>
         </ul>
       </div>
@@ -35,10 +36,12 @@ import { articles } from '../data/articles';
     </div>
   </section>
   <section class="section section-tint">
-    <div class="container split-heading"><div><p class="eyebrow">L’annuaire démarre ici</p><h2>Des fiches conçues pour être comparées.</h2></div><p>Chaque fiche doit distinguer clairement les informations publiques vérifiées, la date de contrôle et les éventuelles relations commerciales. La V1 inclut une structure prête à recevoir les 321 courtiers.</p></div>
-    <div class="container card-grid">
-      {courtiers.map((courtier) => <CourtierCard courtier={courtier} />)}
-    </div>
+    <div class="container split-heading"><div><p class="eyebrow">Transparence</p><h2>{courtiers.length ? 'Les fiches professionnelles disponibles' : 'Un annuaire en préparation'}</h2></div><p>Les guides éditoriaux sont déjà accessibles. Les fiches professionnelles seront publiées séparément, avec une date de vérification et la mention de toute relation commerciale éventuelle.</p></div>
+    {courtiers.length > 0 ? (
+      <div class="container card-grid">{courtiers.map((courtier) => <CourtierCard courtier={courtier} />)}</div>
+    ) : (
+      <div class="container"><DirectoryEmptyState /></div>
+    )}
   </section>
   <section class="section">
     <div class="container steps-grid">

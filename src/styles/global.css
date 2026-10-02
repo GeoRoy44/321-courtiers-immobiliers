@@ -130,6 +130,10 @@ details p { margin: 14px 0 0; }
 .article-card h2 a { font: inherit; color: inherit; }
 .article-eyebrow { margin-top: 24px; }
 .article-date { color: var(--muted); font-size: .85rem; }
+.directory-empty { padding: 32px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--paper); }
+.directory-empty h3 { font-size: 1.35rem; line-height: 1.4; }
+.directory-empty p { max-width: 780px; color: var(--muted); }
+.directory-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; }
 .prose a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
 .prose h3 { margin-top: 30px; line-height: 1.4; }
 .prose > section + section { margin-top: 56px; }
