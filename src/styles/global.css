@@ -163,7 +163,7 @@ details p { margin: 14px 0 0; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .related-guides { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border); }
-.prose > section + section { margin-top: 56px; }
+.prose > section + section, .article-body > section + section { margin-top: 56px; }
 .sitemap-list { display: grid; gap: 16px; }
 .sitemap-list a { display: grid; gap: 4px; padding: 18px; border: 1px solid var(--border); border-radius: 10px; text-decoration: none; }
 .sitemap-list span { color: var(--muted); font-size: .9rem; }

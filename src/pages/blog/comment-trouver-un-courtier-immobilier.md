@@ -24,15 +24,15 @@ Une fois ce cadre posé, vous pouvez [consulter les guides de financement par vi
 
 Avant de confier votre dossier à un courtier en crédit immobilier, commencez par vérifier son immatriculation ORIAS. L’organisme tient le registre officiel des intermédiaires en assurance, banque et finance ; vérifiez l’identité, l’état de l’inscription et la catégorie correspondant à l’activité annoncée, et pas seulement l’existence d’un numéro ([ORIAS](https://www.orias.fr/)). Une inscription en assurance seule ne doit pas être confondue avec une inscription pour l’intermédiation bancaire.
 
-Le second réflexe consiste à contrôler le statut annoncé. Un courtier sérieux doit pouvoir expliquer clairement s’il agit comme IOBSP, sous quel cadre il intervient, et pour quel type de mission. La cohérence entre son activité, son inscription et son mandat compte autant que le registre lui-même. Si le discours reste flou, ou si le professionnel présente des services qui dépassent son périmètre, mieux vaut demander des précisions avant d’aller plus loin. ([orias.fr](https://www.orias.fr/))
+Le second réflexe consiste à contrôler le statut annoncé. Un courtier sérieux doit pouvoir expliquer clairement s’il agit comme IOBSP, sous quel cadre il intervient, et pour quel type de mission. La cohérence entre son activité, son inscription et son mandat compte autant que le registre lui-même. Si le discours reste flou, ou si le professionnel présente des services qui dépassent son périmètre, mieux vaut demander des précisions avant d’aller plus loin.
 
-Regardez aussi si les informations pratiques sont cohérentes : identité du cabinet, catégorie d’inscription, périmètre d’intervention et modalités de rémunération. Un mandataire ou un courtier doit pouvoir présenter un cadre lisible, sans ambiguïté sur ce qu’il fait pour vous. Pour aller plus loin, prenez le temps de comparer les critères avant de contacter un professionnel, puis de préparer les questions à poser lors du premier échange. ([orias.fr](https://www.orias.fr/))
+Regardez aussi si les informations pratiques sont cohérentes : identité du cabinet, catégorie d’inscription, périmètre d’intervention et modalités de rémunération. Un mandataire ou un courtier doit pouvoir présenter un cadre lisible, sans ambiguïté sur ce qu’il fait pour vous. Pour aller plus loin, prenez le temps de comparer les critères avant de contacter un professionnel, puis de préparer les questions à poser lors du premier échange.
 
 <h2 id="criteres-comparaison">Comparer les critères avant de contacter un professionnel</h2>
 
 Avant de contacter un courtier en crédit immobilier, comparez les critères qui influencent réellement votre démarche. Un professionnel peut annoncer un réseau bancaire large, proposer des honoraires distincts ou travailler dans un cadre de mandat différent ; l’important est de savoir ce que chaque élément implique pour votre dossier emprunteur. Les avis en ligne peuvent aider à repérer une réputation, mais ils doivent être lus avec recul : ils ne remplacent ni la vérification de l’immatriculation, ni la lecture des conditions d’intervention, ni l’examen du mode de rémunération. L’objectif est de préparer une comparaison simple, centrée sur ce qui peut varier d’un intermédiaire à l’autre.
 
-Voici une grille utile pour comparer un courtier en prêt immobilier près de chez vous ou à distance avant le premier contact. ([ORIAS](https://www.orias.fr/) ; [Crédit expert](https://www.creditexpert.fr/courtier-immobilier/quest-ce-quun-courtier-immobilier/) ; [Cardif](https://www.cardif.fr/assurance-emprunteur/courtier-credit-immobilier))
+Voici une grille utile pour comparer un courtier en prêt immobilier près de chez vous ou à distance avant le premier contact. ([Crédit expert](https://www.creditexpert.fr/courtier-immobilier/quest-ce-quun-courtier-immobilier/) ; [Cardif](https://www.cardif.fr/assurance-emprunteur/courtier-credit-immobilier))
 
 <p class="table-scroll-hint">Sur petit écran, faites défiler le tableau horizontalement.</p>
 <div class="table-scroll" tabindex="0" role="region" aria-label="Critères de comparaison des courtiers">
@@ -46,8 +46,6 @@ Voici une grille utile pour comparer un courtier en prêt immobilier près de ch
 | Transparence | Repérer les informations publiées sur la rémunération, le rôle et les conditions d’accompagnement |
 
 </div>
-
-Références ([creditexpert.fr](https://www.creditexpert.fr/courtier-immobilier/quest-ce-quun-courtier-immobilier/) ; [cardif.fr](https://www.cardif.fr/assurance-emprunteur/courtier-credit-immobilier))
 
 Pour une recherche locale, comparez plusieurs profils avant d’entrer en relation et gardez en tête que les annuaires ou comparatifs n’ont pas tous la même méthode de sélection. C’est précisément ce point qu’il faut vérifier avant d’accorder votre confiance. Une fois ce premier tri effectué, vous pourrez passer à la prise de contact avec une base plus claire et [préparer les questions à poser lors du premier échange](#questions-premier-echange).
 
@@ -65,7 +63,7 @@ Avant le premier échange, préparez aussi vos questions pour vérifier le manda
 
 Préparer le premier rendez-vous avec un courtier commence par un dossier simple et lisible. Rassemblez vos pièces d’identité, vos justificatifs de revenus, vos relevés de comptes et tout document utile sur votre projet d’achat. L’objectif n’est pas d’arriver avec un dossier parfait, mais avec une base claire pour que le courtier en crédit immobilier comprenne vite votre situation et identifie les points à compléter.
 
-Avant l’échange, vérifiez aussi que le professionnel est bien immatriculé à l’ORIAS : le registre officiel des intermédiaires en assurance, banque et finance est obligatoire pour exercer. Cette étape aide à distinguer un courtier en crédit immobilier d’un simple interlocuteur commercial et à sécuriser le premier contact. ([orias.fr](https://www.orias.fr/))
+Avant l’échange, vérifiez aussi que le professionnel est bien immatriculé à l’ORIAS : le registre officiel des intermédiaires en assurance, banque et finance est obligatoire pour exercer. Cette étape aide à distinguer un courtier en crédit immobilier d’un simple interlocuteur commercial et à sécuriser le premier contact.
 
 Pendant le rendez-vous, posez des questions concrètes sur le mandat, les frais, le mode de suivi du dossier emprunteur et les banques susceptibles d’être sollicitées. Pour gagner du temps, vous pouvez vous appuyer sur la trame ci-dessous pour [préparer les questions à poser lors du premier échange](#questions-premier-echange).
 

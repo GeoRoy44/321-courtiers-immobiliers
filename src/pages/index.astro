@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSearch from '../components/HeroSearch.astro';
 import CourtierCard from '../components/CourtierCard.astro';
 import DirectoryEmptyState from '../components/DirectoryEmptyState.astro';
-import { cities, courtiers } from '../data/courtiers';
+import { courtiers } from '../data/courtiers';
 import ArticleCard from '../components/ArticleCard.astro';
 import { articles } from '../data/articles';
 ---
@@ -13,25 +13,17 @@ import { articles } from '../data/articles';
       <div>
         <p class="eyebrow">Annuaire éditorial indépendant</p>
         <h1>Trouvez un courtier en prêt immobilier près de chez vous.</h1>
-        <p class="lead">Comparez les informations utiles, explorez les pages locales et avancez avec une méthode claire avant votre projet immobilier.</p>
+        <p class="lead">Consultez nos guides du crédit immobilier et avancez avec une méthode claire avant votre projet. L’annuaire des professionnels est en préparation.</p>
         <HeroSearch />
       </div>
       <div class="hero-panel" aria-label="Notre méthode">
         <p class="eyebrow">Recherche utile</p>
-        <strong>Une sélection lisible, ville par ville.</strong>
+        <strong>Des repères clairs avant de choisir.</strong>
         <ul class="check-list">
-          <li>Pages locales et guides de décision</li>
+          <li>Guides du crédit immobilier</li>
           <li>Critères pour comparer les professionnels</li>
           <li>Distinction entre contenu éditorial et partenariat</li>
         </ul>
-      </div>
-    </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <div class="section-heading"><div><p class="eyebrow">Commencer près de vous</p><h2>Explorer les villes déjà disponibles</h2></div><a href="/trouver-mon-courtier/">Voir toutes les villes <span aria-hidden="true">→</span></a></div>
-      <div class="city-grid">
-        {cities.filter((city) => city.status === 'Guide local disponible').map((city) => <a class="city-card" href={`/${city.slug}/`}><span>{city.department}</span><h3>{city.name}</h3><p>{city.status}</p><b aria-hidden="true">→</b></a>)}
       </div>
     </div>
   </section>
@@ -57,5 +49,5 @@ import { articles } from '../data/articles';
       <div class="article-grid">{articles.slice(0, 20).map((article) => <ArticleCard article={article} />)}</div>
     </div>
   </section>
-  <section class="section section-dark"><div class="container cta-panel"><div><p class="eyebrow">Prêt à commencer ?</p><h2>Accédez à l’annuaire par ville.</h2></div><a class="button button-light" href="/trouver-mon-courtier/">Trouver mon courtier</a></div></section>
+  <section class="section section-dark"><div class="container cta-panel"><div><p class="eyebrow">Prêt à commencer ?</p><h2>Préparez votre recherche de financement.</h2></div><a class="button button-light" href="/blog/">Consulter les guides</a></div></section>
 </BaseLayout>

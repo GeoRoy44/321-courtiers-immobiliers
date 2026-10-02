@@ -4,12 +4,12 @@ import CourtierCard from '../../components/CourtierCard.astro';
 import DirectoryEmptyState from '../../components/DirectoryEmptyState.astro';
 import { courtiers } from '../../data/courtiers';
 ---
-<BaseLayout title="Annuaire des courtiers en prêt immobilier | 321 Courtiers" description={courtiers.length ? "Consultez les fiches professionnelles publiées et leurs informations de vérification." : "L’annuaire est en préparation : aucune fiche de courtier vérifiée n’est encore publiée. Découvrez nos guides locaux et notre méthode."}>
+<BaseLayout title="Annuaire des courtiers en prêt immobilier | 321 Courtiers" description={courtiers.length ? "Consultez les fiches professionnelles publiées et leurs informations de vérification." : "L’annuaire est en préparation : aucune fiche de courtier vérifiée n’est encore publiée. Découvrez nos guides du crédit immobilier et notre méthode."}>
   <section class="page-hero page-hero-compact">
     <div class="container narrow">
       <p class="eyebrow">Annuaire des professionnels</p>
       <h1>Annuaire des courtiers en prêt immobilier</h1>
-      <p class="lead">Des informations vérifiées pour préparer votre recherche. Les fiches de professionnels sont distinctes des guides éditoriaux consacrés aux communes et au financement.</p>
+      <p class="lead">Des informations vérifiées pour préparer votre recherche. Les fiches de professionnels sont distinctes des guides éditoriaux consacrés au financement.</p>
     </div>
   </section>
   <section class="section">
@@ -22,7 +22,7 @@ import { courtiers } from '../../data/courtiers';
       <div class="prose narrow section-space">
         <h2>Notre méthode de publication</h2>
         <p>Chaque fiche publiée devra présenter des informations publiques ou autorisées : identité professionnelle, ville, zone d’intervention, spécialités déclarées, site officiel et date de vérification. Les avis, notes ou labels ne seront affichés qu’avec leur source, leur date de relevé et leur contexte.</p>
-        <p>La présence d’un guide sur une commune ne signifie pas qu’un courtier y est référencé. Pour comprendre les critères retenus et la distinction entre information éditoriale et partenariat, consultez <a href="/a-propos/">notre méthode</a>.</p>
+        <p>Les guides éditoriaux ne constituent pas des recommandations de cabinets. Pour comprendre les critères retenus et la distinction entre information éditoriale et partenariat, consultez <a href="/a-propos/">notre méthode</a>.</p>
       </div>
     </div>
   </section>

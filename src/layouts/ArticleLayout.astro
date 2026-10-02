@@ -1,8 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { cities } from '../data/courtiers';
 import { articles } from '../data/articles';
-import { buildArticleToc } from '../utils/article-toc';
+import ContentWithToc from '../components/ContentWithToc.astro';
 interface Props {
   frontmatter: { title: string; description: string; date: string; category?: string };
 }
@@ -11,8 +10,6 @@ const publishedDate = new Date(`${frontmatter.date}T12:00:00Z`).toLocaleDateStri
   day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris',
 });
 const relatedArticles = articles.filter((article) => article.href !== Astro.url.pathname);
-const localCities = cities.filter((city) => city.status === 'Guide local disponible');
-const article = buildArticleToc(await Astro.slots.render('default'));
 ---
 <BaseLayout title={`${frontmatter.title} | 321 Courtiers Immobiliers`} description={frontmatter.description}>
   <section class="page-hero page-hero-compact">
@@ -27,31 +24,11 @@ const article = buildArticleToc(await Astro.slots.render('default'));
   <section class="section">
     <div class="container narrow prose">
       <p class="notice">Ce guide fournit des repères généraux, pas une offre de crédit ni un conseil adapté à votre situation. Faites confirmer votre montage et les conditions applicables par le prêteur et les professionnels concernés.</p>
-      {article.sections.length > 0 && (
-        <nav class="article-toc" aria-label="Sommaire de l’article">
-          <details open>
-            <summary>Sommaire de l’article</summary>
-            <ol>
-              {article.sections.map((section) => (
-                <li>
-                  <a href={`#${encodeURIComponent(section.id)}`}>{section.text}</a>
-                  {section.children.length > 0 && (
-                    <ul>{section.children.map((heading) => <li><a href={`#${encodeURIComponent(heading.id)}`}>{heading.text}</a></li>)}</ul>
-                  )}
-                </li>
-              ))}
-            </ol>
-          </details>
-        </nav>
-      )}
-      <div class="article-body" set:html={article.html} />
+      <ContentWithToc><slot /></ContentWithToc>
       <nav class="related-guides" aria-label="Guides complémentaires">
         <h2>Pour poursuivre votre lecture</h2>
         <ul>{relatedArticles.map((article) => <li><a href={article.href}>{article.title}</a></li>)}</ul>
       </nav>
-      <h2>Préparer votre projet dans le sud de Nantes</h2>
-      <p>Les guides locaux abordent les travaux, les achats dans le neuf et les opérations d’achat-revente. Retrouvez les points à préparer selon votre commune.</p>
-      <ul>{localCities.map((city) => <li><a href={`/${city.slug}/`}>Courtier en prêt immobilier : {city.name}</a></li>)}</ul>
       <p>Vous pouvez aussi consulter <a href="/annuaire-courtiers-pret-immobilier/">l’annuaire des courtiers</a> et <a href="/a-propos/">notre méthode éditoriale</a> pour comprendre le périmètre du site.</p>
     </div>
   </section>

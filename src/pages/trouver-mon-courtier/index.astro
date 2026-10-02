@@ -1,9 +1,32 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import HeroSearch from '../../components/HeroSearch.astro';
-import { cities } from '../../data/courtiers';
+import DirectoryEmptyState from '../../components/DirectoryEmptyState.astro';
 ---
-<BaseLayout title="Trouver un courtier en prêt immobilier | Recherche par ville" description="Trouvez une page locale ou une fiche de courtier en prêt immobilier près de chez vous. Comprenez notre méthode de sélection et de publication.">
-  <section class="page-hero"><div class="container narrow"><p class="eyebrow">Préparer sa recherche</p><h1>Recherchez par ville, puis préparez votre financement.</h1><p class="lead">Retrouvez les guides locaux disponibles pour cadrer votre projet et préparer vos questions. Ces contenus éditoriaux ne sont pas des fiches de courtiers et ne recommandent aucun cabinet particulier.</p><HeroSearch /></div></section>
-  <section class="section"><div class="container content-grid"><article class="prose"><h2>Comment utiliser les guides locaux</h2><ol class="numbered-list"><li><strong>Indiquez votre ville</strong> ou parcourez les destinations disponibles.</li><li><strong>Préparez votre projet</strong> : budget, apport, travaux éventuels et calendrier.</li><li><strong>Demandez des explications claires</strong> au professionnel de votre choix sur son mandat, ses honoraires et son accompagnement.</li></ol><h2>Villes accessibles dès maintenant</h2><div class="city-grid">{cities.filter((city) => city.status === 'Guide local disponible').map((city) => <a class="city-card" href={`/${city.slug}/`}><span>{city.department}</span><h3>{city.name}</h3><p>{city.status}</p><b aria-hidden="true">→</b></a>)}</div></article><aside class="sidebar-card"><p class="eyebrow">Transparence</p><h2>Pas de classement arbitraire.</h2><p>Le site ne présente pas de « meilleur courtier » sans critères explicites. Les futures fiches afficheront une date de contrôle et distingueront toute relation commerciale éventuelle.</p><a class="text-link" href="/a-propos/">Lire notre méthode →</a></aside></div></section>
+<BaseLayout title="Trouver un courtier en prêt immobilier | Préparer sa recherche" description="L’annuaire des courtiers est en préparation. Consultez nos guides pour préparer votre dossier et comparer les professionnels.">
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Préparer sa recherche</p>
+      <h1>Préparez votre recherche de courtier.</h1>
+      <p class="lead">Aucune fiche professionnelle ni page locale n’est disponible pour le moment. Nos guides du crédit immobilier restent accessibles pour cadrer votre projet et préparer vos questions.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container content-grid">
+      <article class="prose">
+        <DirectoryEmptyState />
+        <h2>Les repères pour comparer les professionnels</h2>
+        <ol class="numbered-list">
+          <li><strong>Préparez votre projet</strong> : budget, apport, travaux éventuels et calendrier.</li>
+          <li><strong>Vérifiez l’identité professionnelle</strong> et les informations publiques du cabinet que vous envisagez de contacter.</li>
+          <li><strong>Demandez des explications claires</strong> sur le mandat, les honoraires et l’accompagnement proposé.</li>
+        </ol>
+      </article>
+      <aside class="sidebar-card">
+        <p class="eyebrow">Transparence</p>
+        <h2>Pas de classement arbitraire.</h2>
+        <p>Le site ne présente pas de « meilleur courtier » sans critères explicites. Les futures fiches afficheront une date de contrôle et distingueront toute relation commerciale éventuelle.</p>
+        <a class="text-link" href="/a-propos/">Lire notre méthode →</a>
+      </aside>
+    </div>
+  </section>
 </BaseLayout>

@@ -1,0 +1,27 @@
+---
+import { buildArticleToc } from '../utils/article-toc';
+
+interface Props {
+  label?: string;
+}
+const { label = 'Sommaire de l’article' } = Astro.props;
+const article = buildArticleToc(await Astro.slots.render('default'));
+---
+{article.sections.length > 0 && (
+  <nav class="article-toc" aria-label={label}>
+    <details open>
+      <summary>{label}</summary>
+      <ol>
+        {article.sections.map((section) => (
+          <li>
+            <a href={`#${encodeURIComponent(section.id)}`}>{section.text}</a>
+            {section.children.length > 0 && (
+              <ul>{section.children.map((heading) => <li><a href={`#${encodeURIComponent(heading.id)}`}>{heading.text}</a></li>)}</ul>
+            )}
+          </li>
+        ))}
+      </ol>
+    </details>
+  </nav>
+)}
+<div class="article-body" set:html={article.html} />

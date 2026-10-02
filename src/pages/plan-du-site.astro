@@ -4,18 +4,10 @@ import { articles } from '../data/articles';
 
 const pagesPrincipales = [
   { href: '/', label: 'Accueil', description: 'Présentation de l’annuaire et accès à la recherche locale.' },
-  { href: '/trouver-mon-courtier/', label: 'Trouver mon courtier', description: 'Recherche de pages locales et repères pour comparer les professionnels.' },
+  { href: '/trouver-mon-courtier/', label: 'Trouver mon courtier', description: 'État de l’annuaire et repères pour comparer les professionnels.' },
   { href: '/annuaire-courtiers-pret-immobilier/', label: 'Annuaire des courtiers', description: 'Structure de l’annuaire national de courtiers en prêt immobilier.' },
   { href: '/blog/', label: 'Guides crédit immobilier', description: 'Hub éditorial sur le courtage et le financement.' },
   { href: '/a-propos/', label: 'À propos', description: 'Méthode éditoriale et principes de transparence.' },
-];
-
-const guidesLocaux = [
-  { href: '/courtier-pret-immobilier-reze/', label: 'Courtier en prêt immobilier à Rezé' },
-  { href: '/courtier-pret-immobilier-bouguenais/', label: 'Courtier en prêt immobilier à Bouguenais' },
-  { href: '/courtier-pret-immobilier-vertou/', label: 'Courtier en prêt immobilier à Vertou' },
-  { href: '/courtier-pret-immobilier-les-sorinieres/', label: 'Courtier en prêt immobilier aux Sorinières' },
-  { href: '/courtier-pret-immobilier-la-haye-fouassiere/', label: 'Courtier en prêt immobilier à La Haye-Fouassière' },
 ];
 
 const informations = [
@@ -41,10 +33,6 @@ const informations = [
       <h2>Guides crédit immobilier</h2>
       <div class="sitemap-list">
         {articles.map((article) => <a href={article.href}><strong>{article.title}</strong><span>{article.description}</span></a>)}
-      </div>
-      <h2>Guides locaux</h2>
-      <div class="sitemap-list">
-        {guidesLocaux.map((page) => <a href={page.href}><strong>{page.label}</strong><span>Guide local pour préparer et comparer une recherche de financement.</span></a>)}
       </div>
       <h2>Informations</h2>
       <div class="sitemap-list">
