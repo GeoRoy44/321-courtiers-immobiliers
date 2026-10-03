@@ -1,0 +1,66 @@
+---
+import CourtierCard from './CourtierCard.astro';
+import { courtiers, cities } from '../data/courtiers';
+---
+<div data-directory>
+  <form class="directory-filters" action="/annuaire-courtiers-pret-immobilier/" method="get">
+    <div>
+      <label for="directory-city">Ville</label>
+      <select id="directory-city" name="ville">
+        <option value="">Toutes les villes</option>
+        {cities.map((city) => <option value={city.name} data-postcodes={city.postcodes.join(',')}>{city.name}</option>)}
+      </select>
+    </div>
+    <div>
+      <label for="directory-query">Nom, adresse ou service</label>
+      <input id="directory-query" type="search" name="q" placeholder="Ex. assurance, CAFPI…" />
+    </div>
+    <button class="button" type="submit">Filtrer</button>
+    <button class="button button-outline" type="reset">Tout afficher</button>
+  </form>
+  <p class="directory-count" role="status" aria-live="polite" data-result-count>{courtiers.length} agences affichées · ordre alphabétique</p>
+  <div class="directory-empty" data-no-results hidden>
+    <h3>Aucune fiche pour cette recherche</h3>
+    <p>Seules Nantes, Rennes et Reims sont couvertes dans ce premier lot. Essayez un autre nom ou utilisez « Tout afficher » pour retrouver les agences disponibles.</p>
+  </div>
+  <noscript><p class="notice">Sans JavaScript, les filtres ne s’appliquent pas ; toutes les fiches restent consultables ci-dessous. Vous pouvez aussi ouvrir directement une page de ville.</p></noscript>
+  <div class="card-grid directory-grid">
+    {courtiers.map((courtier) => <CourtierCard courtier={courtier} />)}
+  </div>
+</div>
+<script>
+  import { normalizeQuery, matchesDirectory } from '../utils/directory-search';
+  const directory = document.querySelector<HTMLElement>('[data-directory]');
+  if (directory) {
+    const form = directory.querySelector<HTMLFormElement>('form')!;
+    const city = form.querySelector<HTMLSelectElement>('[name="ville"]')!;
+    const query = form.querySelector<HTMLInputElement>('[name="q"]')!;
+    const count = directory.querySelector<HTMLElement>('[data-result-count]')!;
+    const empty = directory.querySelector<HTMLElement>('[data-no-results]')!;
+    const cards = [...directory.querySelectorAll<HTMLElement>('[data-courtier]')];
+    const params = new URLSearchParams(window.location.search);
+    const requestedCity = normalizeQuery(params.get('ville') || '');
+    const option = [...city.options].find((item) => item.value && (normalizeQuery(item.value) === requestedCity || item.dataset.postcodes?.split(',').includes(requestedCity)));
+    if (option) city.value = option.value;
+    query.value = params.get('q') || (!option ? params.get('ville') || '' : '');
+    const apply = () => {
+      let total = 0;
+      for (const card of cards) {
+        const visible = (!city.value || card.dataset.city === city.value) && matchesDirectory(card.dataset.search || '', query.value);
+        card.hidden = !visible;
+        if (visible) total++;
+      }
+      empty.hidden = total !== 0;
+      count.textContent = `${total} agence${total > 1 ? 's' : ''} affichée${total > 1 ? 's' : ''} · ordre alphabétique`;
+    };
+    form.addEventListener('submit', (event) => { event.preventDefault(); apply(); });
+    city.addEventListener('change', apply);
+    query.addEventListener('input', apply);
+    form.addEventListener('reset', () => { city.value = ''; query.value = ''; apply(); });
+    apply();
+    if (window.location.hash) {
+      const card = cards.find((item) => `#${item.id}` === window.location.hash);
+      if (card) { city.value = ''; query.value = ''; apply(); card.scrollIntoView(); }
+    }
+  }
+</script>

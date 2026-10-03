@@ -2,16 +2,27 @@
 import type { Courtier } from '../data/courtiers';
 interface Props { courtier: Courtier; }
 const { courtier } = Astro.props;
+const date = new Date(`${courtier.checkedAt}T12:00:00Z`).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris' });
+const extraSources = [...new Set(courtier.sources)].filter((url) => url !== courtier.website);
 ---
-<article class="courtier-card">
-  <div class="card-topline"><span>{courtier.city}</span><span>{courtier.department}</span></div>
+<article class="courtier-card" id={courtier.slug} data-courtier data-city={courtier.city} data-search={`${courtier.name} ${courtier.address} ${courtier.specialties.join(' ')}`}>
+  <div class="card-topline"><span>{courtier.city}</span><span>Fiche documentaire</span></div>
   <h3>{courtier.name}</h3>
+  <p class="courtier-address">{courtier.address}</p>
   <p>{courtier.description}</p>
-  <ul class="tags" aria-label="Spécialités">
+  <ul class="tags" aria-label="Services déclarés">
     {courtier.specialties.map((specialty) => <li>{specialty}</li>)}
   </ul>
   <div class="card-footer">
-    <span>Statut : {courtier.verifiedAt}</span>
-    <a href={`/annuaire-courtiers-pret-immobilier/#${courtier.slug}`}>Voir la fiche <span aria-hidden="true">→</span></a>
+    <a href={courtier.website} target="_blank" rel="noopener noreferrer" aria-label={`Site officiel de ${courtier.name} (nouvel onglet)`}>Site officiel <span aria-hidden="true">↗</span></a>
+    {courtier.phone ? <a href={`tel:+33${courtier.phone.replace(/\D/g, '').slice(1)}`} aria-label={`Appeler ${courtier.name} au ${courtier.phone}`}>{courtier.phone}</a> : <span>Téléphone non confirmé</span>}
   </div>
+  <p class="card-check">Sources consultées le <time datetime={courtier.checkedAt}>{date}</time>.</p>
+  {(courtier.note || extraSources.length > 0) && (
+    <details class="card-evidence">
+      <summary>Précisions sur la fiche</summary>
+      {courtier.note && <p>{courtier.note}</p>}
+      {extraSources.map((url, index) => <p><a href={url} target="_blank" rel="noopener noreferrer">Source officielle complémentaire {index + 1}</a></p>)}
+    </details>
+  )}
 </article>

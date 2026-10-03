@@ -12,6 +12,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "node --test tests/*.test.mjs",
+    "test:built": "node scripts/check-built-site.mjs",
     "content:dedupe": "node scripts/dedupe-article-links.mjs",
     "deploy": "wrangler deploy"
   },

@@ -134,6 +134,33 @@ details p { margin: 14px 0 0; }
 .directory-empty h3 { font-size: 1.35rem; line-height: 1.4; }
 .directory-empty p { max-width: 780px; color: var(--muted); }
 .directory-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 24px; }
+[hidden] { display: none !important; }
+.pilot-city-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.directory-notice p { margin: 10px 0 0; font-size: .9rem; }
+.directory-notice a { text-decoration: underline; text-underline-offset: 3px; }
+.directory-filters { display: grid; grid-template-columns: minmax(160px, .7fr) minmax(220px, 1.4fr) auto auto; align-items: end; gap: 14px; padding: 24px; border: 1px solid var(--border); border-radius: 14px; background: var(--mist); }
+.directory-filters label { display: block; margin-bottom: 8px; color: var(--navy); font-weight: 800; font-size: .85rem; }
+.directory-filters input, .directory-filters select { width: 100%; min-width: 0; min-height: 48px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); font: inherit; }
+.button-outline { color: var(--blue); background: transparent; }
+.directory-count { margin: 24px 0; color: var(--muted); font-size: .9rem; }
+.directory-grid { align-items: stretch; }
+.directory-grid .courtier-card { min-width: 0; scroll-margin-top: 108px; }
+.courtier-card .courtier-address { font-weight: 700; color: var(--navy); }
+.courtier-card h3 { line-height: 1.35; }
+.courtier-card .tags { margin-top: 0; margin-bottom: 24px; }
+.courtier-card .tags li { font-size: .75rem; }
+.courtier-card .card-topline { font-size: .75rem; flex-wrap: wrap; }
+.courtier-card .card-footer { margin-top: auto; flex-wrap: wrap; }
+.courtier-card .card-footer a { display: inline-flex; align-items: center; min-height: 44px; }
+.courtier-card .card-check { margin: 14px 0 0; font-size: .75rem; color: var(--muted); }
+.courtier-card .card-evidence { margin-top: 16px; padding: 12px; background: var(--mist); }
+.card-evidence summary { font-size: .8rem; min-height: 28px; }
+.card-evidence p { font-size: .8rem; overflow-wrap: anywhere; }
+.card-evidence a { color: var(--blue); text-decoration: underline; }
+#agences { scroll-margin-top: 82px; }
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+@media (max-width: 900px) { .directory-filters { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .pilot-city-grid, .directory-filters { grid-template-columns: 1fr; } .directory-filters { padding: 18px; } }
 .prose a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; }
 .prose h3 { margin-top: 30px; line-height: 1.4; }
 .prose { overflow-wrap: anywhere; }

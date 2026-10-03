@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CourtierCard from '../components/CourtierCard.astro';
+import DirectoryNotice from '../components/DirectoryNotice.astro';
+import { cities, forCity } from '../data/courtiers';
+import type { City } from '../data/courtiers';
+export function getStaticPaths() {
+  return cities.map((city) => ({ params: { cityDirectory: city.slug }, props: { city } }));
+}
+interface Props { city: City; }
+const { city } = Astro.props;
+const listings = forCity(city.name);
+const canonical = new URL(`/${city.slug}/`, Astro.site).href;
+const structuredData = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage',
+  name: `Courtiers en prêt immobilier à ${city.name}`, url: canonical,
+  mainEntity: { '@type': 'ItemList', numberOfItems: listings.length, itemListOrder: 'https://schema.org/ItemListUnordered',
+    itemListElement: listings.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.name, url: `${canonical}#${item.slug}` })) },
+};
+---
+<BaseLayout title={`Courtier en prêt immobilier à ${city.name} : ${listings.length} agences`} description={`Consultez ${listings.length} agences de courtage en prêt immobilier à ${city.name} : adresses, coordonnées disponibles, services déclarés et sources officielles.`}>
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')} />
+  <section class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <a class="text-link" href="/annuaire-courtiers-pret-immobilier/">← Retour à l’annuaire</a>
+      <p class="eyebrow article-eyebrow">{city.department} · {listings.length} agences documentées</p>
+      <h1>Courtier en prêt immobilier à {city.name}</h1>
+      <p class="lead">{city.intro}</p>
+      <a class="button" href="#agences">Consulter les {listings.length} agences</a>
+    </div>
+  </section>
+  <section class="section" id="agences">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Coordonnées et services déclarés</p><h2>Les agences à {city.name}</h2></div><p>Ordre alphabétique · liste non exhaustive</p></div>
+      <DirectoryNotice />
+      <div class="card-grid directory-grid">{listings.map((courtier) => <CourtierCard courtier={courtier} />)}</div>
+    </div>
+  </section>
+  <section class="section section-tint">
+    <div class="container content-grid">
+      <article class="prose">
+        <h2>Préparer votre recherche à {city.name}</h2>
+        <p>{city.advice}</p>
+        <h3>Les questions à poser avant de signer</h3>
+        <ul>
+          <li>Quelle entité juridique prendra en charge votre demande et quelle est son immatriculation actuelle ?</li>
+          <li>Quels sont les honoraires, leur mode de calcul et les conditions de leur paiement ?</li>
+          <li>Quels services et quel suivi sont inclus dans le mandat proposé ?</li>
+          <li>Comment seront présentés le coût global, l’assurance, les garanties et les conditions des offres ?</li>
+        </ul>
+        <p>Nos fiches ne constituent pas des offres de crédit ni une recommandation personnalisée. Consultez aussi notre <a href="/blog/pret-immobilier/">guide du prêt immobilier</a> et nos repères pour <a href="/blog/comment-trouver-un-courtier-immobilier/">choisir un courtier</a>.</p>
+      </article>
+      <aside class="sidebar-card">
+        <p class="eyebrow">Poursuivre la recherche</p>
+        <h2>Les autres villes</h2>
+        <ul>{cities.filter((item) => item.name !== city.name).map((item) => <li><a class="text-link" href={`/${item.slug}/`}>{item.name} : {forCity(item.name).length} agences</a></li>)}</ul>
+        <a class="button" href="/annuaire-courtiers-pret-immobilier/">Tout l’annuaire</a>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,8 +1,12 @@
+---
+import { cities } from '../data/courtiers';
+---
 <form class="finder" action="/trouver-mon-courtier/" method="get" data-finder>
   <label for="city-search">Votre ville ou votre code postal</label>
   <div class="finder-row">
-    <input id="city-search" name="ville" placeholder="Votre ville ou code postal" autocomplete="postal-code" />
+    <input id="city-search" name="ville" list="available-cities" placeholder="Ex. Nantes, Rennes, Reims" autocomplete="postal-code" />
+    <datalist id="available-cities">{cities.map((city) => <option value={city.name} />)}</datalist>
     <button class="button" type="submit">Trouver un courtier</button>
   </div>
-  <p class="finder-note">L’annuaire est en préparation. Aucune fiche professionnelle n’est encore publiée.</p>
+  <p class="finder-note">Premier lot : Nantes, Rennes et Reims. Liste non exhaustive, sans classement de qualité.</p>
 </form>

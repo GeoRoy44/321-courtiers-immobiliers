@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSearch from '../components/HeroSearch.astro';
-import CourtierCard from '../components/CourtierCard.astro';
-import DirectoryEmptyState from '../components/DirectoryEmptyState.astro';
+import CityLinks from '../components/CityLinks.astro';
+import DirectoryNotice from '../components/DirectoryNotice.astro';
 import { courtiers } from '../data/courtiers';
 import ArticleCard from '../components/ArticleCard.astro';
 import { articles } from '../data/articles';
@@ -13,14 +13,14 @@ import { articles } from '../data/articles';
       <div>
         <p class="eyebrow">Annuaire éditorial indépendant</p>
         <h1>Trouvez un courtier en prêt immobilier près de chez vous.</h1>
-        <p class="lead">Consultez nos guides du crédit immobilier et avancez avec une méthode claire avant votre projet. L’annuaire des professionnels est en préparation.</p>
+        <p class="lead">Retrouvez {courtiers.length} agences documentées à Nantes, Rennes et Reims. Consultez leurs coordonnées déclarées et nos guides pour préparer votre projet immobilier.</p>
         <HeroSearch />
       </div>
       <div class="hero-panel" aria-label="Notre méthode">
         <p class="eyebrow">Recherche utile</p>
         <strong>Des repères clairs avant de choisir.</strong>
         <ul class="check-list">
-          <li>Guides du crédit immobilier</li>
+          <li>Agences recensées dans trois villes</li>
           <li>Critères pour comparer les professionnels</li>
           <li>Distinction entre contenu éditorial et partenariat</li>
         </ul>
@@ -28,12 +28,11 @@ import { articles } from '../data/articles';
     </div>
   </section>
   <section class="section section-tint">
-    <div class="container split-heading"><div><p class="eyebrow">Transparence</p><h2>{courtiers.length ? 'Les fiches professionnelles disponibles' : 'Un annuaire en préparation'}</h2></div><p>Les guides éditoriaux sont déjà accessibles. Les fiches professionnelles seront publiées séparément, avec une date de vérification et la mention de toute relation commerciale éventuelle.</p></div>
-    {courtiers.length > 0 ? (
-      <div class="container card-grid">{courtiers.map((courtier) => <CourtierCard courtier={courtier} />)}</div>
-    ) : (
-      <div class="container"><DirectoryEmptyState /></div>
-    )}
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">Commencer par votre ville</p><h2>Les agences près de vous</h2></div><a href="/annuaire-courtiers-pret-immobilier/">Tout l’annuaire →</a></div>
+      <CityLinks />
+      <div class="section-space"><DirectoryNotice /></div>
+    </div>
   </section>
   <section class="section">
     <div class="container steps-grid">

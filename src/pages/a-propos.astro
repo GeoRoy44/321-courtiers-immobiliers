@@ -1,7 +1,34 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { courtiers, cities } from '../data/courtiers';
 ---
-<BaseLayout title="À propos | 321 Courtiers Immobiliers" description="Découvrez la mission et les principes éditoriaux de 321 Courtiers Immobiliers.">
-  <section class="page-hero page-hero-compact"><div class="container narrow"><p class="eyebrow">À propos</p><h1>Rendre la recherche d’un courtier plus claire.</h1><p class="lead">321 Courtiers Immobiliers est un projet d’annuaire éditorial dédié à la recherche d’un professionnel du crédit immobilier par ville.</p></div></section>
-  <section class="section"><div class="container prose narrow"><h2>Notre objectif</h2><p>Nous voulons offrir une interface simple pour trouver des informations locales, comparer les approches et préparer un premier échange. Le site ne remplace ni l’analyse personnalisée d’un professionnel ni la lecture attentive des conditions de financement.</p><h2>Notre méthode de publication</h2><ul><li>Publier des informations issues de sources publiques, fournies ou autorisées.</li><li>Afficher une date de vérification pour les données qui évoluent.</li><li>Distinguer les contenus éditoriaux, les données factuelles et les éventuels partenariats.</li><li>Éviter les classements ou promesses non justifiés.</li></ul><h2>Développement de l’annuaire</h2><p>Les contenus sur le financement sont accessibles dès maintenant. Les fiches professionnelles seront intégrées progressivement après vérification, sans annoncer un nombre de courtiers que nous n’avons pas encore référencés.</p><p>Consultez <a href="/annuaire-courtiers-pret-immobilier/">l’annuaire</a> pour connaître les fiches disponibles. Les guides éditoriaux ne constituent pas des recommandations de professionnels.</p></div></section>
+<BaseLayout title="À propos | 321 Courtiers Immobiliers" description="Découvrez les sources, les limites du contrôle documentaire et les principes de publication de l’annuaire 321 Courtiers Immobiliers.">
+  <section class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <p class="eyebrow">À propos</p>
+      <h1>Rendre la recherche d’un courtier plus claire.</h1>
+      <p class="lead">321 Courtiers Immobiliers est un annuaire éditorial consacré au prêt immobilier. Le premier lot comprend {courtiers.length} fiches à {cities.map((city) => city.name).join(', ')}.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container prose narrow">
+      <h2>Ce que nous publions</h2>
+      <p>Chaque fiche présente le nom d’une agence, son adresse annoncée, les services déclarés et un lien vers son site officiel. Un téléphone est affiché seulement lorsqu’il a été retrouvé dans une source officielle consultée ; sinon, il est signalé comme non confirmé.</p>
+      <h2>Comment les informations ont été contrôlées</h2>
+      <p>Le lot du 2 octobre 2026 repose sur la lecture documentaire des pages officielles des agences et des réseaux, à l’aide d’un outil d’extraction web. Cet outil peut restituer une version en cache. Les résultats de recherche ont servi au repérage, pas de preuve unique pour remplir les fiches.</p>
+      <p>Le contrôle n’inclut ni appel, ni visite sur place, ni vérification directe du registre ORIAS. Il ne certifie donc pas l’ouverture actuelle des locaux ou l’immatriculation du professionnel. Confirmez ces éléments, l’entité juridique et les conditions du mandat avant de transmettre des documents ou de vous engager.</p>
+      <h2>Les règles de sélection</h2>
+      <ul>
+        <li>Une adresse annoncée dans la commune et une activité de financement immobilier documentée.</li>
+        <li>Les implantations périphériques ne sont pas assimilées à la ville voisine.</li>
+        <li>Les alias d’une même agence sont fusionnés ; deux adresses distinctes d’un réseau peuvent avoir deux fiches.</li>
+        <li>Les coordonnées contradictoires ou incomplètes peuvent conduire à mettre une fiche en attente.</li>
+      </ul>
+      <h2>Pas de classement de qualité</h2>
+      <p>Les fiches sont présentées par ordre alphabétique. La liste est non exhaustive et ne constitue pas une recommandation personnalisée, une offre de crédit ou un classement des « meilleurs courtiers ». Aucune note, aucun avis Google et aucun label de certification n’ont été importés pour ce lot.</p>
+      <h2>Des informations qui peuvent évoluer</h2>
+      <p>La date du contrôle documentaire figure sur les fiches, mais une adresse ou un téléphone peut changer. Le lien officiel vous permet de consulter les informations publiées par le professionnel avant de le contacter. Les guides éditoriaux restent distincts des fiches d’agence.</p>
+      <p>Consultez <a href="/annuaire-courtiers-pret-immobilier/">l’annuaire</a> ou nos <a href="/blog/">guides du crédit immobilier</a> pour poursuivre votre recherche.</p>
+    </div>
+  </section>
 </BaseLayout>

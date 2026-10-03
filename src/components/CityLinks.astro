@@ -1,0 +1,13 @@
+---
+import { cities, forCity } from '../data/courtiers';
+---
+<div class="city-grid pilot-city-grid">
+  {cities.map((city) => (
+    <a class="city-card" href={`/${city.slug}/`}>
+      <span>{city.department}</span>
+      <h3>{city.name}</h3>
+      <p>{forCity(city.name).length} agences documentées</p>
+      <b aria-hidden="true">→</b>
+    </a>
+  ))}
+</div>

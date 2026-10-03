@@ -1,27 +1,30 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CourtierCard from '../../components/CourtierCard.astro';
-import DirectoryEmptyState from '../../components/DirectoryEmptyState.astro';
+import DirectoryListing from '../../components/DirectoryListing.astro';
+import DirectoryNotice from '../../components/DirectoryNotice.astro';
+import CityLinks from '../../components/CityLinks.astro';
 import { courtiers } from '../../data/courtiers';
 ---
-<BaseLayout title="Annuaire des courtiers en prêt immobilier | 321 Courtiers" description={courtiers.length ? "Consultez les fiches professionnelles publiées et leurs informations de vérification." : "L’annuaire est en préparation : aucune fiche de courtier vérifiée n’est encore publiée. Découvrez nos guides du crédit immobilier et notre méthode."}>
+<BaseLayout title="Annuaire des courtiers en prêt immobilier | 321 Courtiers" description={`Retrouvez ${courtiers.length} agences à Nantes, Rennes et Reims : adresses, téléphones disponibles, services déclarés et sources officielles. Filtrez par ville ou nom.`}>
   <section class="page-hero page-hero-compact">
     <div class="container narrow">
       <p class="eyebrow">Annuaire des professionnels</p>
       <h1>Annuaire des courtiers en prêt immobilier</h1>
-      <p class="lead">Des informations vérifiées pour préparer votre recherche. Les fiches de professionnels sont distinctes des guides éditoriaux consacrés au financement.</p>
+      <p class="lead">{courtiers.length} agences documentées à Nantes, Rennes et Reims. Consultez leurs coordonnées déclarées et leurs sites officiels pour préparer votre premier échange.</p>
     </div>
   </section>
   <section class="section">
     <div class="container">
-      {courtiers.length > 0 ? (
-        <div class="card-grid">{courtiers.map((courtier) => <div id={courtier.slug}><CourtierCard courtier={courtier} /></div>)}</div>
-      ) : (
-        <DirectoryEmptyState />
-      )}
+      <h2>Choisir une ville</h2>
+      <CityLinks />
+      <div class="section-space">
+        <h2>Rechercher parmi les agences</h2>
+        <DirectoryNotice />
+        <DirectoryListing />
+      </div>
       <div class="prose narrow section-space">
         <h2>Notre méthode de publication</h2>
-        <p>Chaque fiche publiée devra présenter des informations publiques ou autorisées : identité professionnelle, ville, zone d’intervention, spécialités déclarées, site officiel et date de vérification. Les avis, notes ou labels ne seront affichés qu’avec leur source, leur date de relevé et leur contexte.</p>
+        <p>Les fiches reposent sur les informations déclarées sur les sites officiels : nom, adresse d’agence, services, téléphone lorsqu’il est confirmé dans la source et date du contrôle documentaire. Les champs manquants restent signalés ; aucune note, aucun avis Google et aucun label de certification ne sont ajoutés.</p>
         <p>Les guides éditoriaux ne constituent pas des recommandations de cabinets. Pour comprendre les critères retenus et la distinction entre information éditoriale et partenariat, consultez <a href="/a-propos/">notre méthode</a>.</p>
       </div>
     </div>

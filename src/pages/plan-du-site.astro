@@ -1,10 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { articles } from '../data/articles';
+import { cities, forCity } from '../data/courtiers';
 
 const pagesPrincipales = [
   { href: '/', label: 'Accueil', description: 'Présentation de l’annuaire et accès à la recherche locale.' },
-  { href: '/trouver-mon-courtier/', label: 'Trouver mon courtier', description: 'État de l’annuaire et repères pour comparer les professionnels.' },
+  { href: '/trouver-mon-courtier/', label: 'Trouver mon courtier', description: 'Recherche par ville, nom, adresse et service déclaré.' },
   { href: '/annuaire-courtiers-pret-immobilier/', label: 'Annuaire des courtiers', description: 'Structure de l’annuaire national de courtiers en prêt immobilier.' },
   { href: '/blog/', label: 'Guides crédit immobilier', description: 'Hub éditorial sur le courtage et le financement.' },
   { href: '/a-propos/', label: 'À propos', description: 'Méthode éditoriale et principes de transparence.' },
@@ -29,6 +30,10 @@ const informations = [
       <h2>Pages principales</h2>
       <div class="sitemap-list">
         {pagesPrincipales.map((page) => <a href={page.href}><strong>{page.label}</strong><span>{page.description}</span></a>)}
+      </div>
+      <h2>Courtiers par ville</h2>
+      <div class="sitemap-list">
+        {cities.map((city) => <a href={`/${city.slug}/`}><strong>Courtiers en prêt immobilier à {city.name}</strong><span>{forCity(city.name).length} agences documentées, avec coordonnées disponibles et sources.</span></a>)}
       </div>
       <h2>Guides crédit immobilier</h2>
       <div class="sitemap-list">

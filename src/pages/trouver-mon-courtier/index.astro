@@ -1,19 +1,27 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import DirectoryEmptyState from '../../components/DirectoryEmptyState.astro';
+import CityLinks from '../../components/CityLinks.astro';
+import DirectoryListing from '../../components/DirectoryListing.astro';
+import DirectoryNotice from '../../components/DirectoryNotice.astro';
 ---
-<BaseLayout title="Trouver un courtier en prêt immobilier | Préparer sa recherche" description="L’annuaire des courtiers est en préparation. Consultez nos guides pour préparer votre dossier et comparer les professionnels.">
+<BaseLayout title="Trouver un courtier en prêt immobilier | Recherche par ville" description="Recherchez parmi les agences de courtage recensées à Nantes, Rennes et Reims. Consultez les adresses, services déclarés et coordonnées disponibles.">
   <section class="page-hero">
     <div class="container narrow">
       <p class="eyebrow">Préparer sa recherche</p>
-      <h1>Préparez votre recherche de courtier.</h1>
-      <p class="lead">Aucune fiche professionnelle ni page locale n’est disponible pour le moment. Nos guides du crédit immobilier restent accessibles pour cadrer votre projet et préparer vos questions.</p>
+      <h1>Trouvez une agence dans votre ville.</h1>
+      <p class="lead">Le premier lot couvre Nantes, Rennes et Reims. Parcourez les pages locales ou filtrez les fiches par ville, nom, adresse ou service déclaré.</p>
     </div>
   </section>
   <section class="section">
-    <div class="container content-grid">
-      <article class="prose">
-        <DirectoryEmptyState />
+    <div class="container">
+      <h2>Les villes disponibles</h2>
+      <CityLinks />
+      <div class="section-space">
+        <h2>Les agences de l’annuaire</h2>
+        <DirectoryNotice />
+        <DirectoryListing />
+      </div>
+      <article class="prose narrow section-space">
         <h2>Les repères pour comparer les professionnels</h2>
         <ol class="numbered-list">
           <li><strong>Préparez votre projet</strong> : budget, apport, travaux éventuels et calendrier.</li>
@@ -21,12 +29,6 @@ import DirectoryEmptyState from '../../components/DirectoryEmptyState.astro';
           <li><strong>Demandez des explications claires</strong> sur le mandat, les honoraires et l’accompagnement proposé.</li>
         </ol>
       </article>
-      <aside class="sidebar-card">
-        <p class="eyebrow">Transparence</p>
-        <h2>Pas de classement arbitraire.</h2>
-        <p>Le site ne présente pas de « meilleur courtier » sans critères explicites. Les futures fiches afficheront une date de contrôle et distingueront toute relation commerciale éventuelle.</p>
-        <a class="text-link" href="/a-propos/">Lire notre méthode →</a>
-      </aside>
     </div>
   </section>
 </BaseLayout>

@@ -1,0 +1,507 @@
+[
+  {
+    "name": "AB Courtage Nantes",
+    "slug": "ab-courtage-nantes",
+    "city": "Nantes",
+    "address": "22 rue Paul Bellamy, 44000 Nantes",
+    "phone": "02 40 76 89 31",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance de prêt",
+      "Rachat de crédits"
+    ],
+    "description": "Agence de courtage pour les projets de résidence principale, de résidence secondaire et d’investissement locatif.",
+    "website": "https://agence.abcourtage.com/pays-de-la-loire/loire-atlantique/nantes/ab-courtage-nantes-5",
+    "sources": [
+      "https://agence.abcourtage.com/pays-de-la-loire/loire-atlantique/nantes/ab-courtage-nantes-5"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Nantes Crédit est l’entité juridique de cette agence : une seule fiche, pas deux."
+  },
+  {
+    "name": "APG Courtage Nantes",
+    "slug": "apg-courtage-nantes",
+    "city": "Nantes",
+    "address": "12 rue de Mayence, 44000 Nantes",
+    "phone": "02 28 08 90 51",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur"
+    ],
+    "description": "Accompagnement du budget initial au dossier de financement, pour un achat dans le neuf ou l’ancien.",
+    "website": "https://www.apg-courtage.fr/nos-agences/courtier-nantes/",
+    "sources": [
+      "https://www.apg-courtage.fr/nos-agences/courtier-nantes/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Artémis Courtage Nantes Erlon",
+    "slug": "artemis-courtage-nantes-erlon",
+    "city": "Nantes",
+    "address": "4-6 rue d’Erlon, 44000 Nantes",
+    "phone": "02 59 51 04 69",
+    "specialties": [
+      "Financement immobilier"
+    ],
+    "description": "Agence de courtage présentant une équipe de conseillers et de responsables en financement immobilier.",
+    "website": "https://www.artemiscourtage.com/nos-agences/courtier-immobilier-a-nantes-erlon/",
+    "sources": [
+      "https://www.artemiscourtage.com/nos-agences/courtier-immobilier-a-nantes-erlon/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "CAFPI Nantes",
+    "slug": "cafpi-nantes",
+    "city": "Nantes",
+    "address": "7 rue du Pont Sauvetout, 44000 Nantes",
+    "phone": "02 40 47 10 00",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédits"
+    ],
+    "description": "Étude de la capacité d’emprunt et accompagnement dans la recherche d’un prêt immobilier, en agence ou à distance.",
+    "website": "https://www.cafpi.fr/agences/courtier-nantes",
+    "sources": [
+      "https://www.cafpi.fr/agences/courtier-nantes"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Empruntis Nantes Est",
+    "slug": "empruntis-nantes-est",
+    "city": "Nantes",
+    "address": "127 boulevard Jules Verne, 44300 Nantes",
+    "phone": "02 40 52 17 05",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédit"
+    ],
+    "description": "Agence du réseau Empruntis pour étudier un financement immobilier et comparer des offres de prêt.",
+    "website": "https://www.empruntis.com/agences/courtier-nantes-7.php",
+    "sources": [
+      "https://www.empruntis.com/agences/courtier-nantes-7.php"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Même téléphone que Nantes Sud Est, mais adresse distincte explicitement listée par le réseau."
+  },
+  {
+    "name": "Empruntis Nantes Sud Est",
+    "slug": "empruntis-nantes-sud-est",
+    "city": "Nantes",
+    "address": "80 rue Saint-Jacques, 44200 Nantes",
+    "phone": "02 40 52 17 05",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédit"
+    ],
+    "description": "Agence du réseau Empruntis pour préparer un projet immobilier et rechercher des conditions de financement.",
+    "website": "https://www.empruntis.com/agences/courtier-nantes-7.php",
+    "sources": [
+      "https://www.empruntis.com/agences/courtier-nantes-7.php"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Même téléphone que Nantes Est, mais adresse distincte explicitement listée par le réseau."
+  },
+  {
+    "name": "Immoprêt Nantes Nord",
+    "slug": "immopret-nantes-nord",
+    "city": "Nantes",
+    "address": "65 boulevard Ernest Dalby, 44000 Nantes",
+    "phone": "06 64 18 60 13",
+    "specialties": [
+      "Prêt immobilier",
+      "Renégociation de prêt",
+      "Assurance de prêt immobilier"
+    ],
+    "description": "Agence proposant le courtage en prêt immobilier, la renégociation de prêt et l’assurance emprunteur.",
+    "website": "https://www.immopret.fr/nos-agences/courtier-immobilier-nantes-nord/",
+    "sources": [
+      "https://www.immopret.fr/nos-agences/courtier-immobilier-nantes-nord/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Le nom commercial « Nantes Nord » est conservé tel que publié, sans déduire un quartier de l’appellation."
+  },
+  {
+    "name": "La Centrale de Financement Nantes",
+    "slug": "la-centrale-de-financement-nantes",
+    "city": "Nantes",
+    "address": "28 rue de Strasbourg, 44000 Nantes",
+    "phone": "02 85 52 17 77",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédits"
+    ],
+    "description": "Agence proposant l’étude d’un financement immobilier, de l’assurance emprunteur et du rachat de crédits.",
+    "website": "https://www.lacentraledefinancement.fr/agences/pret-immobilier-nantes-44000/",
+    "sources": [
+      "https://www.lacentraledefinancement.fr/agences/pret-immobilier-nantes-44000/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Prelys Courtage Nantes",
+    "slug": "prelys-courtage-nantes",
+    "city": "Nantes",
+    "address": "78 route de Clisson, 44200 Nantes",
+    "phone": "02 40 03 50 86",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance de prêt",
+      "Rachat de crédit immobilier"
+    ],
+    "description": "Étude du budget et de la capacité d’emprunt, recherche de financement et comparaison de l’assurance de prêt.",
+    "website": "https://www.prelys-courtage.com/nantes/",
+    "sources": [
+      "https://www.prelys-courtage.com/nantes/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "AGEF Courtage Rennes",
+    "slug": "agef-courtage-rennes",
+    "city": "Rennes",
+    "address": "Équinoxe, 1 rue Robert Duvivier, 35000 Rennes",
+    "phone": "02 99 31 65 43",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédit"
+    ],
+    "description": "Conseil sur la capacité d’achat, aide au montage du dossier et présentation du projet aux banques.",
+    "website": "https://www.agefcourtage.fr/courtier-rennes",
+    "sources": [
+      "https://www.agefcourtage.fr/courtier-rennes"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Artémis Courtage Rennes Mairie",
+    "slug": "artemis-courtage-rennes-mairie",
+    "city": "Rennes",
+    "address": "1 rue Baudrairie, 35000 Rennes",
+    "phone": "02 57 67 12 05",
+    "specialties": [
+      "Prêt immobilier",
+      "Rachat de crédit",
+      "Assurance emprunteur"
+    ],
+    "description": "Accompagnement dans la recherche d’un financement immobilier, la négociation des conditions et le suivi administratif.",
+    "website": "https://www.artemiscourtage.com/nos-agences/courtier-rennes-mairie/",
+    "sources": [
+      "https://www.artemiscourtage.com/nos-agences/courtier-rennes-mairie/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "CAFPI Rennes",
+    "slug": "cafpi-rennes",
+    "city": "Rennes",
+    "address": "71 mail François Mitterrand, 35000 Rennes",
+    "phone": "02 23 44 81 81",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédits"
+    ],
+    "description": "Étude de la capacité d’emprunt et recherche de financement immobilier, avec des rendez-vous en agence ou à distance.",
+    "website": "https://www.cafpi.fr/agences/courtier-rennes",
+    "sources": [
+      "https://www.cafpi.fr/agences/courtier-rennes"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "CL Courtage Rennes",
+    "slug": "cl-courtage-rennes",
+    "city": "Rennes",
+    "address": "Le Papyrus, 57 rue de Lorient, 35000 Rennes",
+    "phone": "02 23 55 21 64",
+    "specialties": [
+      "Prêt immobilier"
+    ],
+    "description": "Accompagnement dans la recherche et la négociation d’un crédit immobilier, à partir du dossier de financement.",
+    "website": "https://www.cl-courtage.fr/courtier-rennes/",
+    "sources": [
+      "https://www.cl-courtage.fr/courtier-rennes/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Finance Conseil Rennes",
+    "slug": "finance-conseil-rennes",
+    "city": "Rennes",
+    "address": "32 rue du Docteur Joly, 35000 Rennes",
+    "phone": null,
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédits"
+    ],
+    "description": "Agence de courtage en prêt immobilier et assurance emprunteur, proposant aussi des rendez-vous à distance ou à domicile.",
+    "website": "https://particuliers.financeconseil.fr/agences/courtier-rennes/",
+    "sources": [
+      "https://particuliers.financeconseil.fr/agences/courtier-rennes/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Le téléphone n’a pas pu être confirmé dans le contenu officiel consulté. Utilisez le site de l’agence pour la contacter."
+  },
+  {
+    "name": "La Centrale de Financement Rennes",
+    "slug": "la-centrale-de-financement-rennes",
+    "city": "Rennes",
+    "address": "2 rue du Bignon, 35000 Rennes",
+    "phone": "02 30 96 30 00",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédits"
+    ],
+    "description": "Agence proposant l’étude de prêts immobiliers, la comparaison de financements et la renégociation de crédits.",
+    "website": "https://www.lacentraledefinancement.fr/agences/pret-immobilier-rennes-35000/",
+    "sources": [
+      "https://www.lacentraledefinancement.fr/agences/pret-immobilier-rennes-35000/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Prelys Courtage Rennes",
+    "slug": "prelys-courtage-rennes",
+    "city": "Rennes",
+    "address": "1 avenue Germaine Dulac, 35000 Rennes",
+    "phone": "02 23 22 88 80",
+    "specialties": [
+      "Prêt immobilier"
+    ],
+    "description": "Étude financière personnalisée, calcul de la capacité d’emprunt et accompagnement dans le montage du prêt immobilier.",
+    "website": "https://www.prelys-courtage.com/rennes/",
+    "sources": [
+      "https://www.prelys-courtage.com/rennes/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Agence franchisée indépendante selon sa page officielle."
+  },
+  {
+    "name": "Sur Mesure Rennes",
+    "slug": "sur-mesure-rennes",
+    "city": "Rennes",
+    "address": "4 place du Parlement de Bretagne, 35000 Rennes",
+    "phone": "02 23 62 03 01",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur"
+    ],
+    "description": "Cabinet de courtage proposant la présentation du dossier à plusieurs banques et la négociation du prêt et de l’assurance.",
+    "website": "https://courtiersurmesure.fr/",
+    "sources": [
+      "https://courtiersurmesure.fr/",
+      "https://courtiersurmesure.fr/agences-bretonnes/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "AVICAP Reims",
+    "slug": "avicap-reims",
+    "city": "Reims",
+    "address": "Centre d’affaires, 9 rue André Pingat, 51100 Reims",
+    "phone": "06 50 94 92 81",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance de prêt"
+    ],
+    "description": "Accompagnement en crédit immobilier et assurance de prêt, avec un accueil à Reims sur rendez-vous.",
+    "website": "https://www.avicap.fr/courtier-credit-reims.html",
+    "sources": [
+      "https://www.avicap.fr/courtier-credit-reims.html"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "CAFPI Reims",
+    "slug": "cafpi-reims",
+    "city": "Reims",
+    "address": "4 boulevard de la Paix, 51100 Reims",
+    "phone": "03 26 35 25 00",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédits"
+    ],
+    "description": "Étude du projet immobilier, de la capacité d’emprunt et des conditions de financement, en agence ou à distance.",
+    "website": "https://www.cafpi.fr/agences/courtier-reims",
+    "sources": [
+      "https://www.cafpi.fr/agences/courtier-reims"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Crédits et Conseils Reims",
+    "slug": "credits-et-conseils-reims",
+    "city": "Reims",
+    "address": "55 avenue Jean Jaurès, 51100 Reims",
+    "phone": null,
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance de prêt",
+      "Regroupement de crédits"
+    ],
+    "description": "Cabinet proposant le courtage en prêt immobilier et l’accompagnement sur l’assurance de prêt, avec des bureaux à Reims.",
+    "website": "https://credits-et-conseils.fr/",
+    "sources": [
+      "https://credits-et-conseils.fr/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Le téléphone n’a pas pu être confirmé dans le contenu officiel consulté. Utilisez le site de l’agence pour la contacter."
+  },
+  {
+    "name": "Empruntis Reims",
+    "slug": "empruntis-reims",
+    "city": "Reims",
+    "address": "53 cours Jean-Baptiste Langlet, 51100 Reims",
+    "phone": "03 26 50 14 00",
+    "specialties": [
+      "Prêt immobilier",
+      "Renégociation de crédit",
+      "Assurance de prêt immobilier"
+    ],
+    "description": "Montage et analyse du dossier, établissement du plan de financement et recherche d’une offre de prêt immobilier.",
+    "website": "https://www.empruntis.com/agences/courtier-immobilier-reims-531.php",
+    "sources": [
+      "https://www.empruntis.com/agences/courtier-immobilier-reims-531.php"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "IN&FI Crédits Reims Farman",
+    "slug": "in-fi-credits-reims-farman",
+    "city": "Reims",
+    "address": "7 rue Étienne Oehmichen, 51100 Reims",
+    "phone": "06 50 66 19 27",
+    "specialties": [
+      "Prêt immobilier",
+      "Rachat de crédits",
+      "Renégociation de prêt"
+    ],
+    "description": "Agence proposant des solutions de prêt immobilier, de rachat de crédits et de renégociation de prêt.",
+    "website": "https://www.inandfi-credits.fr/courtier/reims",
+    "sources": [
+      "https://www.inandfi-credits.fr/courtier/reims"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "La Centrale de Financement Reims",
+    "slug": "la-centrale-de-financement-reims",
+    "city": "Reims",
+    "address": "1 cours Jean-Baptiste Langlet, 51100 Reims",
+    "phone": "03 52 74 04 04",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Rachat de crédits"
+    ],
+    "description": "Agence de courtage pour étudier un crédit immobilier, l’assurance emprunteur ou un rachat de crédits.",
+    "website": "https://www.lacentraledefinancement.fr/agences/pret-immobilier-reims-51100/",
+    "sources": [
+      "https://www.lacentraledefinancement.fr/agences/pret-immobilier-reims-51100/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Moineo Reims",
+    "slug": "moineo-reims",
+    "city": "Reims",
+    "address": "20 boulevard de la Paix, 51100 Reims",
+    "phone": "03 26 40 52 70",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance emprunteur",
+      "Regroupement de crédits"
+    ],
+    "description": "Agence proposant du crédit immobilier, de l’assurance emprunteur et du regroupement de crédits, en agence ou à distance.",
+    "website": "https://www.moineo.fr/secteurs/secteur-marne/agence-reims",
+    "sources": [
+      "https://www.moineo.fr/secteurs/secteur-marne/agence-reims"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": null
+  },
+  {
+    "name": "Prelys Courtage Reims",
+    "slug": "prelys-courtage-reims",
+    "city": "Reims",
+    "address": "18 rue Voltaire, 51100 Reims",
+    "phone": "03 26 97 77 52",
+    "specialties": [
+      "Prêt immobilier"
+    ],
+    "description": "Étude financière personnalisée, calcul de la capacité d’emprunt et accompagnement dans la constitution du dossier de financement.",
+    "website": "https://www.prelys-courtage.com/reims/",
+    "sources": [
+      "https://www.prelys-courtage.com/reims/"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Agence franchisée indépendante selon sa page officielle."
+  },
+  {
+    "name": "Vousfinancer Reims Nord",
+    "slug": "vousfinancer-reims-nord",
+    "city": "Reims",
+    "address": "248 avenue de Laon, 51100 Reims",
+    "phone": "03 26 49 00 20",
+    "specialties": [
+      "Prêt immobilier",
+      "Renégociation de crédit",
+      "Restructuration de prêts"
+    ],
+    "description": "Agence proposant la recherche de financement immobilier, la renégociation de crédit et la restructuration de prêts.",
+    "website": "https://courtier.vousfinancer.com/grand-est/marne/reims",
+    "sources": [
+      "https://courtier.vousfinancer.com/grand-est/marne/reims",
+      "https://courtier.vousfinancer.com/reims/vousfinancer-reims-nord-234"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Adresse et téléphone issus de la liste officielle des établissements rémois ; nom et activité issus de la page Reims Nord. Le téléphone et les adresses de Troyes dans ses mentions légales ne sont pas utilisés comme coordonnées locales."
+  },
+  {
+    "name": "Vousfinancer Reims Sud",
+    "slug": "vousfinancer-reims-sud",
+    "city": "Reims",
+    "address": "39 avenue Hoche, 51100 Reims",
+    "phone": "03 26 46 84 60",
+    "specialties": [
+      "Prêt immobilier",
+      "Assurance de prêt",
+      "Rachat de crédits"
+    ],
+    "description": "Accompagnement d’un projet immobilier, du rendez-vous bancaire jusqu’à la signature chez le notaire.",
+    "website": "https://courtier.vousfinancer.com/grand-est/marne/reims/courtier-en-credit-a-reims-51-74",
+    "sources": [
+      "https://courtier.vousfinancer.com/grand-est/marne/reims/courtier-en-credit-a-reims-51-74",
+      "https://courtier.vousfinancer.com/grand-est/marne/reims"
+    ],
+    "checkedAt": "2026-10-02",
+    "note": "Téléphone fixe retenu, concordant entre les mentions de l’agence et la liste officielle ; le mobile présent dans les publications n’est pas ajouté."
+  }
+]
