@@ -1,13 +1,3 @@
-import { activeBlogArticlePaths } from './active-blog-article-paths.mjs';
-
-const normalizePathname = (pathname) => {
-  const normalized = pathname.replace(/\/+$/, '');
-  return normalized || '/';
-};
-
-const isRequiredArticleAsset = (pathname) =>
-  pathname.startsWith('/_astro/') || pathname === '/favicon.svg';
-
 const goneResponse = (method) =>
   new Response(
     method === 'HEAD'
@@ -26,13 +16,12 @@ const goneResponse = (method) =>
 
 export default {
   async fetch(request, env) {
-    const pathname = normalizePathname(new URL(request.url).pathname);
+    const response = await env.ASSETS.fetch(request);
 
-    if (
-      activeBlogArticlePaths.has(pathname) ||
-      isRequiredArticleAsset(pathname)
-    ) {
-      return env.ASSETS.fetch(request);
+    // Keep every page and asset that really exists in the current Astro build.
+    // Convert only unknown legacy/spam URLs from the generated 404 to 410 Gone.
+    if (response.status !== 404) {
+      return response;
     }
 
     return goneResponse(request.method);

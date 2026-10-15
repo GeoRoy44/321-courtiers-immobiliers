@@ -2,12 +2,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import worker from '../worker/index.mjs';
-import { activeBlogArticlePaths } from '../worker/active-blog-article-paths.mjs';
 
-const fetchThroughAssets = async (path, method = 'GET') => {
+const fetchWithStatus = async (path, upstreamStatus, method = 'GET') => {
   const request = new Request(`https://321courtierimmobilier.fr${path}`, { method });
-  const upstream = new Response(method === 'HEAD' ? null : 'Article or asset', {
-    status: 200,
+  const upstream = new Response(method === 'HEAD' ? null : 'Upstream response', {
+    status: upstreamStatus,
   });
   const response = await worker.fetch(request, {
     ASSETS: {
@@ -17,42 +16,19 @@ const fetchThroughAssets = async (path, method = 'GET') => {
       },
     },
   });
-  assert.equal(response, upstream);
+  return { response, upstream };
 };
 
-const fetchGone = async (path, method = 'GET') => {
-  const response = await worker.fetch(
-    new Request(`https://321courtierimmobilier.fr${path}`, { method }),
-    {
-      ASSETS: {
-        fetch() {
-          throw new Error(`410 path reached assets: ${path}`);
-        },
-      },
-    },
-  );
-  assert.equal(response.status, 410, `${method} ${path}`);
-  assert.equal(response.headers.get('Location'), null);
-  assert.equal(response.headers.get('X-Robots-Tag'), 'noindex');
-  const body = await response.text();
-  assert.equal(method === 'HEAD' ? body === '' : body.includes('410 Gone'), true);
-};
-
-test('only the six genuine broker blog articles pass through', async () => {
-  assert.equal(activeBlogArticlePaths.size, 6);
-  for (const path of activeBlogArticlePaths) {
-    for (const suffix of ['', '/', '?utm_source=test', '/?utm_source=test']) {
-      for (const method of ['GET', 'HEAD']) {
-        await fetchThroughAssets(`${path}${suffix}`, method);
-      }
-    }
-  }
-});
-
-test('all other public page URLs return 410', async () => {
-  const gonePaths = [
+test('all real site pages and required assets keep their upstream response', async () => {
+  const livePaths = [
     '/',
     '/blog/',
+    '/blog/comment-fonctionne-courtier-pret-immobilier/',
+    '/blog/comment-trouver-un-courtier-immobilier/',
+    '/blog/courtier-immobilier-c-est-quoi/',
+    '/blog/courtier-ou-banque-pret-immobilier/',
+    '/blog/pret-immobilier/',
+    '/blog/role-courtier-pret-immobilier/',
     '/a-propos/',
     '/annuaire-courtiers-pret-immobilier/',
     '/trouver-mon-courtier/',
@@ -62,22 +38,47 @@ test('all other public page URLs return 410', async () => {
     '/courtier-pret-immobilier-nantes/',
     '/robots.txt',
     '/sitemap-index.xml',
-    '/unknown-page/',
-    '/terapi-farmakologi-gagal-ginjal/',
-    '/blog/faux-article/',
-    '/blog/role-courtier-pret-immobilier-faux/',
+    '/favicon.svg',
+    '/_astro/article.ABC123.css',
   ];
 
-  for (const path of gonePaths) {
+  for (const path of livePaths) {
     for (const method of ['GET', 'HEAD']) {
-      await fetchGone(path, method);
+      const { response, upstream } = await fetchWithStatus(path, 200, method);
+      assert.equal(response, upstream, `${method} ${path}`);
+      assert.equal(response.status, 200, `${method} ${path}`);
     }
   }
 });
 
-test('article build assets remain available', async () => {
-  await fetchThroughAssets('/_astro/article.ABC123.css');
-  await fetchThroughAssets('/favicon.svg');
+test('every missing legacy, spam or unknown URL becomes 410', async () => {
+  const missingPaths = [
+    '/terapi-farmakologi-gagal-ginjal/',
+    '/buku-mimpi-menangis/',
+    '/url-absente-du-fichier/',
+    '/category/spam-inconnue/',
+    '/wp-content/uploads/ancienne-image.jpg',
+    '/blog/faux-article/',
+  ];
+
+  for (const path of missingPaths) {
+    for (const method of ['GET', 'HEAD']) {
+      const { response } = await fetchWithStatus(path, 404, method);
+      assert.equal(response.status, 410, `${method} ${path}`);
+      assert.equal(response.headers.get('Location'), null);
+      assert.equal(response.headers.get('X-Robots-Tag'), 'noindex');
+      const body = await response.text();
+      assert.equal(method === 'HEAD' ? body === '' : body.includes('410 Gone'), true);
+    }
+  }
+});
+
+test('non-404 upstream statuses are never rewritten', async () => {
+  for (const status of [301, 403, 405, 500]) {
+    const { response, upstream } = await fetchWithStatus('/technical-case', status);
+    assert.equal(response, upstream);
+    assert.equal(response.status, status);
+  }
 });
 
 test('Cloudflare runs the Worker before static assets', () => {
