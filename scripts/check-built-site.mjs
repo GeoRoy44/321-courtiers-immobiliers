@@ -2,6 +2,7 @@ import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { parse } from 'parse5';
 import assert from 'node:assert/strict';
+import { retiredPaths } from '../worker/retired-paths.mjs';
 
 const root=resolve('dist');
 const files=dir=>readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(join(dir,e.name)):[join(dir,e.name)]);
@@ -29,6 +30,14 @@ for(const file of files(root).filter(p=>p.endsWith('.html'))){
   assert.equal(h1,1,`H1 count: ${file}`);
 }
 const sitemap=readFileSync(join(root,'sitemap-0.xml'),'utf8');
+for (const path of retiredPaths) {
+  assert.ok(!existsSync(join(root, path, 'index.html')), `Retired spam asset: ${path}`);
+  assert.ok(!existsSync(join(root, `${path}.html`)), `Retired spam asset: ${path}`);
+  assert.ok(!sitemap.includes(path), `Retired spam in sitemap: ${path}`);
+  for (const file of files(root).filter(p=>p.endsWith('.html'))) {
+    assert.ok(!readFileSync(file, 'utf8').includes(path), `Retired spam link: ${file}`);
+  }
+}
 for(const city of ['nantes','rennes','reims'])assert.ok(sitemap.includes(`/courtier-pret-immobilier-${city}/`));
 assert.ok(!retired.test(sitemap));
 const counts={nantes:9,rennes:8,reims:10};

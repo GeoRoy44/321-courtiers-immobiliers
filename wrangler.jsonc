@@ -1,11 +1,13 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "321-courtiers-immobiliers",
+  "main": "./worker/index.mjs",
   "compatibility_date": "2026-10-02",
   "build": {
     "command": "npm run build"
   },
   "assets": {
+    "binding": "ASSETS",
     "directory": "./dist",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"
