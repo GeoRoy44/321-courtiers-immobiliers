@@ -19,7 +19,25 @@ const fetchWithStatus = async (path, upstreamStatus, method = 'GET') => {
   return { response, upstream };
 };
 
-test('all real site pages and required assets keep their upstream response', async () => {
+test('HTTP requests permanently redirect to the exact canonical HTTPS URL', async () => {
+  for (const path of ['/', '/blog/', '/blog/pret-immobilier/?utm_source=test']) {
+    const request = new Request(`http://321courtierimmobilier.fr${path}`);
+    const response = await worker.fetch(request, {
+      ASSETS: {
+        fetch() {
+          throw new Error('HTTP request reached assets');
+        },
+      },
+    });
+    assert.equal(response.status, 308);
+    assert.equal(
+      response.headers.get('Location'),
+      `https://321courtierimmobilier.fr${path}`,
+    );
+  }
+});
+
+test('all real HTTPS site pages and required assets keep their upstream response', async () => {
   const livePaths = [
     '/',
     '/blog/',
@@ -51,8 +69,9 @@ test('all real site pages and required assets keep their upstream response', asy
   }
 });
 
-test('every missing legacy, spam or unknown URL becomes 410', async () => {
+test('every missing legacy, spam or unknown HTTPS URL becomes 410', async () => {
   const missingPaths = [
+    '/asianbookie5/',
     '/terapi-farmakologi-gagal-ginjal/',
     '/buku-mimpi-menangis/',
     '/url-absente-du-fichier/',
@@ -73,7 +92,7 @@ test('every missing legacy, spam or unknown URL becomes 410', async () => {
   }
 });
 
-test('non-404 upstream statuses are never rewritten', async () => {
+test('non-404 HTTPS upstream statuses are never rewritten', async () => {
   for (const status of [301, 403, 405, 500]) {
     const { response, upstream } = await fetchWithStatus('/technical-case', status);
     assert.equal(response, upstream);

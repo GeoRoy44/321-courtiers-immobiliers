@@ -14,8 +14,19 @@ const goneResponse = (method) =>
     },
   );
 
+const canonicalHttpsResponse = (request) => {
+  const url = new URL(request.url);
+  if (url.protocol === 'https:') return null;
+
+  url.protocol = 'https:';
+  return Response.redirect(url.toString(), 308);
+};
+
 export default {
   async fetch(request, env) {
+    const redirect = canonicalHttpsResponse(request);
+    if (redirect) return redirect;
+
     const response = await env.ASSETS.fetch(request);
 
     // Keep every page and asset that really exists in the current Astro build.
