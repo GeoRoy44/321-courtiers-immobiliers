@@ -4,6 +4,7 @@ import HeroSearch from '../components/HeroSearch.astro';
 import CityLinks from '../components/CityLinks.astro';
 import DirectoryNotice from '../components/DirectoryNotice.astro';
 import CityBrokers from '../components/CityBrokers.astro';
+import HomeFaq from '../components/HomeFaq.astro';
 import { courtiers } from '../data/courtiers';
 import ArticleCard from '../components/ArticleCard.astro';
 import { articles } from '../data/articles';
@@ -43,14 +44,6 @@ import { articles } from '../data/articles';
       <article><span>03</span><h3>Lisez les conditions globales</h3><p>Le taux ne suffit pas : assurance, garanties, frais et souplesse du prêt comptent aussi.</p></article>
     </div>
   </section>
-  <section class="section section-tint" aria-labelledby="comprendre-courtage">
-    <div class="container narrow prose">
-      <h2 id="comprendre-courtage">Comprendre le courtage immobilier et choisir un professionnel</h2>
-      <p>Le courtier en prêt immobilier est un intermédiaire qui recherche un financement dans le cadre d’un mandat confié par son client. Avant de lui transmettre votre dossier, vérifiez son immatriculation et sa catégorie d’activité dans le <a href="https://www.orias.fr/" target="_blank" rel="noopener noreferrer">registre officiel de l’ORIAS</a>.</p>
-      <p>Pour comparer les propositions, examinez le taux annuel effectif global (TAEG), qui prend en compte les intérêts et les frais nécessaires à l’obtention du crédit aux conditions annoncées. Le site institutionnel <a href="https://www.abe-infoservice.fr/fr/banque/credit/credit-immobilier/que-faut-il-savoir-sur-le-credit-immobilier" target="_blank" rel="noopener noreferrer">Assurance Banque Épargne Infoservice</a> explique les taux, l’assurance emprunteur et les garanties du prêt immobilier. Demandez également au professionnel quels établissements il consulte et comment sont calculés les frais et commissions liés à son intervention.</p>
-      <p>Pour les entreprises qui souhaitent également répondre à des appels d’offres de l’État, la <a href="https://www.marches-publics.gouv.fr/" target="_blank" rel="noopener noreferrer">Plateforme des achats de l’État (PLACE)</a> permet de consulter les marchés publics et de déposer une réponse. Cette démarche de commande publique est distincte de la recherche d’un crédit immobilier pour un particulier.</p>
-    </div>
-  </section>
   <section class="section section-tint">
     <div class="container">
       <div class="section-heading"><div><p class="eyebrow">Préparer votre financement</p><h2>Les derniers guides</h2></div><a href="/blog/">Tous les guides →</a></div>
@@ -59,4 +52,5 @@ import { articles } from '../data/articles';
   </section>
   <section class="section section-dark"><div class="container cta-panel"><div><p class="eyebrow">Prêt à commencer ?</p><h2>Préparez votre recherche de financement.</h2></div><a class="button button-light" href="/blog/">Consulter les guides</a></div></section>
   <CityBrokers />
+  <HomeFaq />
 </BaseLayout>

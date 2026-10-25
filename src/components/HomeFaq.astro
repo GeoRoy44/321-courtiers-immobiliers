@@ -1,0 +1,62 @@
+---
+import { homeFaq, institutionalLinks } from '../data/homeFaq';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer },
+  })),
+};
+---
+<section class="section home-faq" id="faq-courtier">
+  <div class="container home-faq-grid">
+    <div>
+      <div class="section-heading home-faq-heading">
+        <div>
+          <p class="eyebrow">Questions fréquentes</p>
+          <h2>Courtier en prêt immobilier : vos questions</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        {homeFaq.map((item) => (
+          <details class="home-faq-item">
+            <summary>{item.question}</summary>
+            <p>{item.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+    <aside class="home-faq-links" aria-label="Ressources officielles">
+      <p class="eyebrow">Sources officielles</p>
+      <h3>Pour aller plus loin</h3>
+      <ul>
+        {institutionalLinks.map((link) => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+            <span>{link.description}</span>
+          </li>
+        ))}
+      </ul>
+    </aside>
+  </div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<style>
+  .home-faq-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(280px, .8fr); align-items: start; gap: 48px; }
+  .home-faq-heading { margin-bottom: 28px; }
+  .home-faq-item { background: var(--paper); }
+  .home-faq-item summary { line-height: 1.4; }
+  .home-faq-item p { color: #43525f; font-size: .95rem; }
+  .home-faq-links { position: sticky; top: 108px; padding: 30px; border-radius: var(--radius); background: var(--mist); }
+  .home-faq-links h3 { margin-bottom: 18px; font-size: 1.35rem; }
+  .home-faq-links ul { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+  .home-faq-links li { display: grid; gap: 4px; }
+  .home-faq-links a { color: var(--blue); font-weight: 800; font-size: .92rem; text-decoration: underline; text-underline-offset: 3px; }
+  .home-faq-links span { color: var(--muted); font-size: .84rem; }
+  @media (max-width: 900px) { .home-faq-grid { grid-template-columns: 1fr; } .home-faq-links { position: static; } }
+  @media (max-width: 600px) { .home-faq-links { padding: 22px; } }
+</style>
