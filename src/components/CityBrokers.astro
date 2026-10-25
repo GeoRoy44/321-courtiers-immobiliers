@@ -1,0 +1,30 @@
+---
+import { cityBrokers } from '../data/cityBrokers';
+---
+<section class="section city-brokers" id="trouver-un-courtier">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Par ville</p>
+        <h2>Trouver un courtier dans ma ville</h2>
+      </div>
+    </div>
+    <div class="city-brokers-grid">
+      {cityBrokers.map((city) => (
+        <details class="city-brokers-card" id={`courtiers-${city.slug}`}>
+          <summary>
+            <span class="city-brokers-dept">{city.department}</span>
+            <span class="city-brokers-name">Courtiers à {city.name}</span>
+            <span class="city-brokers-count">{city.brokers.length} courtiers</span>
+            <b class="city-brokers-chevron" aria-hidden="true">+</b>
+          </summary>
+          <ul class="city-brokers-list">
+            {city.brokers.map((b) => (
+              <li>{b.href ? <a href={b.href} rel="noopener">{b.name}</a> : b.name}</li>
+            ))}
+          </ul>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

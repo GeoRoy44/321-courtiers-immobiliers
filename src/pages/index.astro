@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroSearch from '../components/HeroSearch.astro';
 import CityLinks from '../components/CityLinks.astro';
 import DirectoryNotice from '../components/DirectoryNotice.astro';
+import CityBrokers from '../components/CityBrokers.astro';
 import { courtiers } from '../data/courtiers';
 import ArticleCard from '../components/ArticleCard.astro';
 import { articles } from '../data/articles';
@@ -49,4 +50,5 @@ import { articles } from '../data/articles';
     </div>
   </section>
   <section class="section section-dark"><div class="container cta-panel"><div><p class="eyebrow">Prêt à commencer ?</p><h2>Préparez votre recherche de financement.</h2></div><a class="button button-light" href="/blog/">Consulter les guides</a></div></section>
+  <CityBrokers />
 </BaseLayout>

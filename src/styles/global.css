@@ -204,3 +204,22 @@ a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible
 .footer-bottom { padding: 20px 0; border-top: 1px solid rgba(191, 208, 218, .2); color: #9eb3bf; font-size: .73rem; }
 @media (max-width: 900px) { .site-header nav { display: none; } .hero-grid, .content-grid { grid-template-columns: 1fr; } .hero-panel { max-width: 560px; } .city-grid { grid-template-columns: repeat(2, 1fr); } .card-grid, .article-grid { grid-template-columns: repeat(2, 1fr); } .steps-grid { grid-template-columns: repeat(2, 1fr); } .steps-grid > div { grid-column: 1 / -1; } .sidebar-card { position: static; } }
 @media (max-width: 600px) { .container, .narrow { width: min(100% - 28px, 1160px); } .header-inner { min-height: 70px; } .header-inner > .button { display: none; } .home-hero { padding: 68px 0; } .page-hero { padding: 58px 0; } .section { padding: 66px 0; } .finder-row { grid-template-columns: 1fr; } .section-heading, .split-heading, .cta-panel { align-items: start; flex-direction: column; } .split-heading > * { width: auto; } .city-grid, .card-grid, .article-grid, .steps-grid, .service-grid, .footer-grid { grid-template-columns: 1fr; } .hero-panel { padding: 28px; } h1 { font-size: 2.75rem; } .footer-grid { gap: 30px; } }
+
+/* Bloc accueil : Trouver un courtier dans ma ville */
+.city-brokers { background: var(--mist); }
+.city-brokers-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; }
+.city-brokers-card { padding: 0; border: 1px solid var(--border); border-radius: 14px; background: var(--paper); transition: box-shadow .2s; }
+.city-brokers-card[open], .city-brokers-card:hover { box-shadow: var(--shadow); }
+.city-brokers-card summary { position: relative; display: grid; gap: 4px; padding: 24px 56px 24px 24px; list-style: none; }
+.city-brokers-card summary::-webkit-details-marker { display: none; }
+.city-brokers-dept { color: var(--blue); font-size: .69rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+.city-brokers-name { color: var(--navy); font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; line-height: 1.15; }
+.city-brokers-count { color: var(--muted); font-size: .81rem; font-weight: 500; }
+.city-brokers-chevron { position: absolute; top: 24px; right: 22px; display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; background: var(--blue-soft); color: var(--blue); font-size: 1.2rem; transition: transform .2s; }
+.city-brokers-card[open] .city-brokers-chevron { transform: rotate(45deg); }
+.city-brokers-list { margin: 0; padding: 0 24px 24px 44px; color: #43525f; font-size: .95rem; }
+.city-brokers-list li + li { margin-top: 8px; }
+.city-brokers-list li::marker { color: var(--blue); }
+.city-brokers-list a { color: var(--blue); text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
+@media (max-width: 900px) { .city-brokers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .city-brokers-grid { grid-template-columns: 1fr; } .city-brokers-card summary { padding: 20px 52px 20px 18px; } .city-brokers-list { padding: 0 18px 20px 38px; } }
