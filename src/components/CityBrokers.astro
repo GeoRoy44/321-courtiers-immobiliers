@@ -20,7 +20,7 @@ import { cityBrokers } from '../data/cityBrokers';
           </summary>
           <ul class="city-brokers-list">
             {city.brokers.map((b) => (
-              <li>{b.href ? <a href={b.href} rel="noopener">{b.name}</a> : b.name}</li>
+              <li>{b.href ? <a href={b.href} target="_blank" rel="noopener noreferrer">{b.name}</a> : b.name}</li>
             ))}
           </ul>
         </details>
