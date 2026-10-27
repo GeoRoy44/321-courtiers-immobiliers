@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { retiredPaths } from '../../worker/retired-paths.mjs';
+
+const site = 'https://321courtierimmobilier.fr';
+const retiredUrls = [...retiredPaths].sort().map((path) => `${site}${path}`);
+---
+<BaseLayout title="URL supprimées définitivement (410) | 321 Courtiers Immobiliers" description="Liste des anciennes adresses retirées du site 321courtierimmobilier.fr et renvoyant désormais un code HTTP 410 Gone.">
+  <section class="page-hero page-hero-compact">
+    <div class="container narrow">
+      <p class="eyebrow">Transparence technique</p>
+      <h1 class="retired-title">URL supprimées définitivement</h1>
+      <p class="lead">Ces adresses ne font pas partie de 321 Courtiers Immobiliers. Elles proviennent d’un ancien contenu sans rapport avec le crédit immobilier et renvoient volontairement un code HTTP <strong>410 Gone</strong> afin d’être retirées des moteurs de recherche.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container narrow prose">
+      <h2>Liste des {retiredUrls.length} adresses retirées</h2>
+      <p>Chaque lien ci-dessous aboutit à une réponse 410. Cette page sert uniquement à faciliter la re-vérification par les robots d’indexation.</p>
+      <ul class="retired-list">
+        {retiredUrls.map((url) => (
+          <li><a href={url}>{url}</a></li>
+        ))}
+      </ul>
+      <p class="retired-note">Dernière mise à jour : 15 octobre 2026. Les versions avec ou sans barre oblique finale et avec paramètres renvoient le même statut.</p>
+      <p><a class="text-link" href="/plan-du-site/">Voir le plan du site actif →</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .retired-title { font-size: clamp(2.1rem, 3.6vw, 3.2rem); }
+  .retired-list { display: grid; gap: 10px; padding-left: 22px; }
+  .retired-list a { overflow-wrap: anywhere; }
+  .retired-note { margin-top: 28px; color: var(--muted); font-size: .9rem; }
+</style>

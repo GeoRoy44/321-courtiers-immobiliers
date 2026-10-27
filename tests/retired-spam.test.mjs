@@ -3,10 +3,26 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import worker from '../worker/index.mjs';
 
+const REQUIRED_SECURITY_HEADERS = [
+  'Strict-Transport-Security',
+  'Content-Security-Policy',
+  'X-Frame-Options',
+  'X-Content-Type-Options',
+  'Referrer-Policy',
+  'Permissions-Policy',
+];
+
+const assertSecurityHeaders = (response, label) => {
+  for (const header of REQUIRED_SECURITY_HEADERS) {
+    assert.ok(response.headers.get(header), `${label}: missing ${header}`);
+  }
+};
+
 const fetchWithStatus = async (path, upstreamStatus, method = 'GET') => {
   const request = new Request(`https://321courtierimmobilier.fr${path}`, { method });
   const upstream = new Response(method === 'HEAD' ? null : 'Upstream response', {
     status: upstreamStatus,
+    headers: { 'Content-Type': 'text/plain' },
   });
   const response = await worker.fetch(request, {
     ASSETS: {
@@ -34,10 +50,11 @@ test('HTTP requests permanently redirect to the exact canonical HTTPS URL', asyn
       response.headers.get('Location'),
       `https://321courtierimmobilier.fr${path}`,
     );
+    assertSecurityHeaders(response, `redirect ${path}`);
   }
 });
 
-test('all real HTTPS site pages and required assets keep their upstream response', async () => {
+test('all real HTTPS site pages and required assets keep their upstream status and body', async () => {
   const livePaths = [
     '/',
     '/blog/',
@@ -53,18 +70,23 @@ test('all real HTTPS site pages and required assets keep their upstream response
     '/mentions-legales/',
     '/politique-confidentialite/',
     '/plan-du-site/',
+    '/urls-supprimees/',
     '/courtier-pret-immobilier-nantes/',
     '/robots.txt',
     '/sitemap-index.xml',
+    '/sitemap-410.xml',
     '/favicon.svg',
     '/_astro/article.ABC123.css',
   ];
 
   for (const path of livePaths) {
     for (const method of ['GET', 'HEAD']) {
-      const { response, upstream } = await fetchWithStatus(path, 200, method);
-      assert.equal(response, upstream, `${method} ${path}`);
+      const { response } = await fetchWithStatus(path, 200, method);
       assert.equal(response.status, 200, `${method} ${path}`);
+      assert.equal(response.headers.get('Content-Type'), 'text/plain', `${method} ${path}`);
+      const body = await response.text();
+      assert.equal(body, method === 'HEAD' ? '' : 'Upstream response', `${method} ${path}`);
+      assertSecurityHeaders(response, `${method} ${path}`);
     }
   }
 });
@@ -86,6 +108,8 @@ test('every missing legacy, spam or unknown HTTPS URL becomes 410', async () => 
       assert.equal(response.status, 410, `${method} ${path}`);
       assert.equal(response.headers.get('Location'), null);
       assert.equal(response.headers.get('X-Robots-Tag'), 'noindex');
+      assert.equal(response.headers.get('X-Content-Type-Options'), 'nosniff');
+      assertSecurityHeaders(response, `${method} ${path}`);
       const body = await response.text();
       assert.equal(method === 'HEAD' ? body === '' : body.includes('410 Gone'), true);
     }
@@ -94,9 +118,9 @@ test('every missing legacy, spam or unknown HTTPS URL becomes 410', async () => 
 
 test('non-404 HTTPS upstream statuses are never rewritten', async () => {
   for (const status of [301, 403, 405, 500]) {
-    const { response, upstream } = await fetchWithStatus('/technical-case', status);
-    assert.equal(response, upstream);
+    const { response } = await fetchWithStatus('/technical-case', status);
     assert.equal(response.status, status);
+    assertSecurityHeaders(response, `status ${status}`);
   }
 });
 
