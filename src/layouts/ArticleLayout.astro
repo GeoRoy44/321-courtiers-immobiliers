@@ -1,17 +1,19 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { articles } from '../data/articles';
+import { articles, articleByHref } from '../data/articles';
 import ContentWithToc from '../components/ContentWithToc.astro';
 interface Props {
-  frontmatter: { title: string; description: string; date: string; category?: string };
+  frontmatter: { title: string; description: string; date: string; category?: string; seoTitle?: string };
 }
 const { frontmatter } = Astro.props;
 const publishedDate = new Date(`${frontmatter.date}T12:00:00Z`).toLocaleDateString('fr-FR', {
   day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Europe/Paris',
 });
+const current = articleByHref(Astro.url.pathname);
+const seoTitle = frontmatter.seoTitle ?? current?.seoTitle ?? frontmatter.title;
 const relatedArticles = articles.filter((article) => article.href !== Astro.url.pathname);
 ---
-<BaseLayout title={`${frontmatter.title} | 321 Courtiers Immobiliers`} description={frontmatter.description}>
+<BaseLayout title={seoTitle} description={frontmatter.description}>
   <section class="page-hero page-hero-compact">
     <div class="container narrow">
       <a class="text-link" href="/blog/">← Tous les guides crédit</a>
