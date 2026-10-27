@@ -1,4 +1,5 @@
 import raw from '../data/retired-urls.txt?raw';
+import rawExtra from '../data/retired-urls-extra.txt?raw';
 
 export const SITE = 'https://321courtierimmobilier.fr';
 export const RETIRED_LASTMOD = '2026-10-15';
@@ -45,7 +46,7 @@ const normalise = (line: string): string | null => {
 };
 
 export const retiredPaths: string[] = [...new Set(
-  raw.split(/\r?\n/).map(normalise).filter((p): p is string => p !== null),
+  `${raw}\n${rawExtra}`.split(/\r?\n/).map(normalise).filter((p): p is string => p !== null),
 )].sort();
 
 export const retiredUrls: string[] = retiredPaths.map((p) => `${SITE}${p}`);
