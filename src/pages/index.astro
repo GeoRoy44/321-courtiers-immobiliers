@@ -58,7 +58,16 @@ const heroImage = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?aut
       <div class="article-grid">{articles.slice(0, 20).map((article) => <ArticleCard article={article} />)}</div>
     </div>
   </section>
-  <section class="section section-dark"><div class="container cta-panel"><div><p class="eyebrow">Prêt à commencer ?</p><h2>Préparez votre recherche de financement.</h2></div><a class="button button-light" href="/blog/">Consulter les guides</a></div></section>
+  <section class="section section-dark">
+    <div class="container cta-panel">
+      <div>
+        <p class="eyebrow">Prêt à commencer ?</p>
+        <h2>Préparez votre recherche de financement.</h2>
+        <p class="cta-text">Un bon financement se prépare avant le premier rendez-vous : connaître votre capacité d’emprunt, votre apport et le coût réel d’un crédit vous place en position de force face aux banques comme aux courtiers. Nos guides expliquent pas à pas le TAEG, l’assurance emprunteur, le prêt à taux zéro et les documents à réunir pour un dossier solide. Lisez-les, puis revenez choisir un courtier dans votre ville avec les bonnes questions en tête.</p>
+      </div>
+      <a class="button button-light" href="/blog/">Consulter les guides</a>
+    </div>
+  </section>
   <CityBrokers />
   <HomeFaq />
 </BaseLayout>
@@ -77,6 +86,8 @@ const heroImage = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?aut
   .hero-bubble strong { display: block; margin-bottom: 16px; color: white; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; line-height: 1.15; }
   .hero-bubble :global(.check-list) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 24px; }
   .hero-bubble :global(.check-list li::after) { border-color: var(--navy); }
+  .cta-panel h2 { margin-bottom: 16px; }
+  .cta-text { max-width: 620px; margin: 0; color: #c9d8e2; font-size: .98rem; line-height: 1.7; }
   @media (max-width: 900px) {
     .hero-compact-grid { grid-template-columns: 1fr; gap: 28px; }
     .hero-compact-media { order: -1; }
@@ -87,5 +98,6 @@ const heroImage = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?aut
     .home-hero-compact { padding: 40px 0 44px; }
     .hero-compact-title { font-size: 2rem; }
     .hero-bubble { padding: 22px 20px; margin-top: 36px; }
+    .cta-text { font-size: .92rem; }
   }
 </style>
