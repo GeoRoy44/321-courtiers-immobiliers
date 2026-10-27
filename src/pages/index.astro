@@ -8,18 +8,25 @@ import HomeFaq from '../components/HomeFaq.astro';
 import { courtiers } from '../data/courtiers';
 import ArticleCard from '../components/ArticleCard.astro';
 import { articles } from '../data/articles';
+
+const heroImage = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1280&q=80';
 ---
 <BaseLayout title="321 Courtiers Immobiliers | Trouver un courtier près de chez vous" description="Recherchez des courtiers en prêt immobilier par ville, découvrez notre méthode et consultez des guides pour préparer votre financement.">
   <Fragment set:html={'<!-- 942f6c4d9432c1157e925d4faaa718b1 -->'} />
-  <section class="home-hero">
-    <div class="container hero-grid">
-      <div>
+  <section class="home-hero home-hero-compact">
+    <div class="container hero-compact-grid">
+      <div class="hero-compact-copy">
         <p class="eyebrow">Annuaire éditorial indépendant</p>
-        <h1>Trouvez un courtier en prêt immobilier près de chez vous.</h1>
-        <p class="lead">Retrouvez {courtiers.length} agences documentées à Nantes, Rennes et Reims. Consultez leurs coordonnées déclarées et nos guides pour préparer votre projet immobilier.</p>
+        <h1 class="hero-compact-title">Trouvez un courtier en prêt immobilier près de chez vous.</h1>
+        <p class="lead hero-compact-lead">Retrouvez {courtiers.length} agences documentées à Nantes, Rennes et Reims. Consultez leurs coordonnées déclarées et nos guides pour préparer votre projet immobilier.</p>
         <HeroSearch />
       </div>
-      <div class="hero-panel" aria-label="Notre méthode">
+      <figure class="hero-compact-media">
+        <img src={heroImage} width="640" height="520" alt="Couple recevant les clés de son logement après un financement immobilier" loading="eager" decoding="async" fetchpriority="high" />
+      </figure>
+    </div>
+    <div class="container">
+      <aside class="hero-bubble" aria-label="Notre méthode">
         <p class="eyebrow">Recherche utile</p>
         <strong>Des repères clairs avant de choisir.</strong>
         <ul class="check-list">
@@ -27,7 +34,7 @@ import { articles } from '../data/articles';
           <li>Critères pour comparer les professionnels</li>
           <li>Distinction entre contenu éditorial et partenariat</li>
         </ul>
-      </div>
+      </aside>
     </div>
   </section>
   <section class="section section-tint">
@@ -55,3 +62,30 @@ import { articles } from '../data/articles';
   <CityBrokers />
   <HomeFaq />
 </BaseLayout>
+
+<style>
+  .home-hero-compact { padding: 64px 0 56px; }
+  .hero-compact-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); align-items: center; gap: 48px; }
+  .hero-compact-title { font-size: clamp(2.1rem, 3.6vw, 3.2rem); letter-spacing: -.03em; margin-bottom: 16px; }
+  .hero-compact-lead { font-size: clamp(1rem, 1.4vw, 1.12rem); margin-bottom: 0; }
+  .hero-compact-copy :global(.finder) { margin-top: 24px; }
+  .hero-compact-media { margin: 0; }
+  .hero-compact-media img { display: block; width: 100%; height: auto; max-height: 520px; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
+  .hero-bubble { position: relative; max-width: 760px; margin-top: 44px; padding: 28px 32px; border: 1px solid #cfe0eb; border-radius: var(--radius); background: var(--navy); color: #e9f3f8; box-shadow: var(--shadow); }
+  .hero-bubble::before { content: ''; position: absolute; top: -12px; left: 48px; width: 24px; height: 24px; background: var(--navy); border-left: 1px solid #cfe0eb; border-top: 1px solid #cfe0eb; transform: rotate(45deg); }
+  .hero-bubble .eyebrow { color: var(--accent); }
+  .hero-bubble strong { display: block; margin-bottom: 16px; color: white; font-family: 'DM Serif Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; line-height: 1.15; }
+  .hero-bubble :global(.check-list) { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px 24px; }
+  .hero-bubble :global(.check-list li::after) { border-color: var(--navy); }
+  @media (max-width: 900px) {
+    .hero-compact-grid { grid-template-columns: 1fr; gap: 28px; }
+    .hero-compact-media { order: -1; }
+    .hero-compact-media img { max-height: 320px; }
+    .hero-bubble :global(.check-list) { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .home-hero-compact { padding: 40px 0 44px; }
+    .hero-compact-title { font-size: 2rem; }
+    .hero-bubble { padding: 22px 20px; margin-top: 36px; }
+  }
+</style>
