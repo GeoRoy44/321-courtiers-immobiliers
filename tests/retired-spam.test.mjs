@@ -18,21 +18,56 @@ const assertSecurityHeaders = (response, label) => {
   }
 };
 
-const fetchWithStatus = async (path, upstreamStatus, method = 'GET') => {
-  const request = new Request(`https://321courtierimmobilier.fr${path}`, { method });
+const makeCtx = () => {
+  const tasks = [];
+  return { waitUntil: (p) => tasks.push(p), flush: () => Promise.all(tasks) };
+};
+
+const makeDb = ({ failWith = null, rows = [] } = {}) => {
+  const calls = [];
+  const db = {
+    calls,
+    prepare(sql) {
+      const stmt = {
+        sql,
+        params: [],
+        bind(...params) { stmt.params = params; return stmt; },
+        async run() {
+          calls.push({ sql, params: stmt.params });
+          if (failWith) throw new Error(failWith);
+          return { success: true };
+        },
+        async all() {
+          calls.push({ sql, params: stmt.params });
+          if (failWith) throw new Error(failWith);
+          return { results: rows };
+        },
+      };
+      return stmt;
+    },
+  };
+  return db;
+};
+
+const fetchWithStatus = async (path, upstreamStatus, method = 'GET', extra = {}) => {
+  const request = new Request(`https://321courtierimmobilier.fr${path}`, { method, headers: extra.headers });
   const upstream = new Response(method === 'HEAD' ? null : 'Upstream response', {
     status: upstreamStatus,
     headers: { 'Content-Type': 'text/plain' },
   });
-  const response = await worker.fetch(request, {
+  const ctx = makeCtx();
+  const env = {
     ASSETS: {
       async fetch(input) {
         assert.equal(input, request);
         return upstream;
       },
     },
-  });
-  return { response, upstream };
+    ...extra.env,
+  };
+  const response = await worker.fetch(request, env, ctx);
+  await ctx.flush();
+  return { response, upstream, env };
 };
 
 test('HTTP requests permanently redirect to the exact canonical HTTPS URL', async () => {
@@ -44,7 +79,7 @@ test('HTTP requests permanently redirect to the exact canonical HTTPS URL', asyn
           throw new Error('HTTP request reached assets');
         },
       },
-    });
+    }, makeCtx());
     assert.equal(response.status, 308);
     assert.equal(
       response.headers.get('Location'),
@@ -124,11 +159,82 @@ test('non-404 HTTPS upstream statuses are never rewritten', async () => {
   }
 });
 
-test('Cloudflare runs the Worker before static assets', () => {
+test('410 hits from search bots are recorded in D1, browsers are ignored', async () => {
+  const bot = makeDb();
+  await fetchWithStatus('/spam-bot/', 404, 'GET', {
+    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' },
+    env: { RETIRED_DB: bot },
+  });
+  assert.equal(bot.calls.length, 1);
+  assert.match(bot.calls[0].sql, /INSERT INTO retired_hits/);
+  assert.equal(bot.calls[0].params[0], '/spam-bot/');
+
+  const browser = makeDb();
+  await fetchWithStatus('/spam-browser/', 404, 'GET', {
+    headers: { 'User-Agent': 'Mozilla/5.0 (Macintosh) Safari/605.1.15' },
+    env: { RETIRED_DB: browser },
+  });
+  assert.equal(browser.calls.length, 0);
+});
+
+test('a missing table is created on the fly, and D1 failures never break the 410', async () => {
+  let created = false;
+  const db = makeDb();
+  const original = db.prepare.bind(db);
+  db.prepare = (sql) => {
+    const stmt = original(sql);
+    if (/INSERT INTO/.test(sql) && !created) {
+      stmt.run = async () => { created = true; throw new Error('D1_ERROR: no such table: retired_hits'); };
+    }
+    return stmt;
+  };
+  const { response } = await fetchWithStatus('/spam-first/', 404, 'GET', {
+    headers: { 'User-Agent': 'bingbot/2.0' },
+    env: { RETIRED_DB: db },
+  });
+  assert.equal(response.status, 410);
+  assert.ok(db.calls.some((c) => /CREATE TABLE IF NOT EXISTS retired_hits/.test(c.sql)));
+
+  const broken = makeDb({ failWith: 'D1_ERROR: daily write limit exceeded' });
+  const result = await fetchWithStatus('/spam-quota/', 404, 'GET', {
+    headers: { 'User-Agent': 'Googlebot' },
+    env: { RETIRED_DB: broken },
+  });
+  assert.equal(result.response.status, 410);
+});
+
+test('export route requires the secret key and returns one path per line', async () => {
+  const rows = [
+    { path: '/a-spam', hits: 3, first_seen: '2026-10-27T00:00:00Z', last_seen: '2026-10-28T00:00:00Z', ua: 'Googlebot' },
+    { path: '/b-spam', hits: 1, first_seen: '2026-10-27T00:00:00Z', last_seen: '2026-10-27T00:00:00Z', ua: 'bingbot' },
+  ];
+  const env = { ASSETS: { fetch() { throw new Error('export must not reach assets'); } }, RETIRED_DB: makeDb({ rows }), RETIRED_EXPORT_KEY: 's3cret' };
+
+  const denied = await worker.fetch(new Request('https://321courtierimmobilier.fr/api/retired-export'), env, makeCtx());
+  assert.equal(denied.status, 401);
+  assert.equal(denied.headers.get('X-Robots-Tag'), 'noindex');
+
+  const wrong = await worker.fetch(new Request('https://321courtierimmobilier.fr/api/retired-export?key=nope'), env, makeCtx());
+  assert.equal(wrong.status, 401);
+
+  const ok = await worker.fetch(new Request('https://321courtierimmobilier.fr/api/retired-export?key=s3cret'), env, makeCtx());
+  assert.equal(ok.status, 200);
+  assert.equal(ok.headers.get('X-Retired-Count'), '2');
+  assert.equal(await ok.text(), '/a-spam\n/b-spam\n');
+  assertSecurityHeaders(ok, 'export');
+
+  const csv = await worker.fetch(new Request('https://321courtierimmobilier.fr/api/retired-export?key=s3cret&format=csv'), env, makeCtx());
+  assert.match(csv.headers.get('Content-Type'), /text\/csv/);
+  assert.match(await csv.text(), /^path,hits,first_seen,last_seen,ua\n"\/a-spam","3"/);
+});
+
+test('Cloudflare runs the Worker before static assets and binds the D1 collector', () => {
   const config = JSON.parse(readFileSync('wrangler.jsonc', 'utf8'));
   assert.equal(config.main, './worker/index.mjs');
   assert.equal(config.assets.binding, 'ASSETS');
   assert.equal(config.assets.not_found_handling, '404-page');
   assert.equal(config.assets.run_worker_first, true);
   assert.ok(existsSync(config.main));
+  assert.equal(config.d1_databases[0].binding, 'RETIRED_DB');
+  assert.equal(config.d1_databases[0].database_name, 'retired-hits');
 });

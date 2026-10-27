@@ -12,5 +12,12 @@
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page",
     "run_worker_first": true
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "RETIRED_DB",
+      "database_name": "retired-hits",
+      "database_id": "216b7346-24e3-4af3-994b-ddcbebe364de"
+    }
+  ]
 }
