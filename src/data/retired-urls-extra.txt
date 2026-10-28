@@ -1,6 +1,7 @@
-# Ajouts ponctuels (URL spam encore indexées repérées via site: le 2026-10-27)
+# Ajouts ponctuels (URL spam encore indexées repérées via site: le 2026-10-27 et DataForSEO SERP le 2026-10-28)
 /asianbookie5
 /kingtop-group
+/cabal-estgames-com
 
 # Anciennes URL du site WordPress d'origine (export Wayback Machine CDX, 2026-10-27)
 /321courtierimmobilier-e1563262160621
