@@ -39,7 +39,7 @@ export const cityBrokers: CityBrokers[] = [
     slug: 'nantes',
     department: 'Loire-Atlantique (44)',
     brokers: [
-      { name: 'Courtier en prêt immo à Nantes', href: 'https://courtier-pret-immo44.fr/' },
+      { name: 'Courtier en prêt immo à Nantes' },
       { name: 'CAFPI Nantes' },
       { name: 'La Centrale de Financement Nantes' },
       { name: 'Artémis Courtage Nantes Sud' },
